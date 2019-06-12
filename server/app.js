@@ -6,7 +6,7 @@ var logger = require('morgan');
 var productsRouter = require('./routes/products');
 
 var mongoose = require('mongoose');
-var mongoDB = 'mongodb+srv://jordan:uHyWLakjZp3TQvbf@cluster0-eyvt0.mongodb.net/VGX?retryWrites=true';
+var mongoDB = 'mongodb+srv://jordan:uHyWLakjZp3TQvbf@cluster0-eyvt0.mongodb.net/VGX?retryWrites=true&w=majority';
 mongoose.connect(mongoDB, { useNewUrlParser: true });
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB Connection Error:'));

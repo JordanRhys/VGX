@@ -45,6 +45,11 @@ router.get('/topproducts', (req, res, next) => {
             stock: 2
         }
     ];
+    var pulled = [];
+    Product.find().exec((err, results) => {
+        if (!err) { console.log(results)}
+    })
+    console.log(pulled);
     res.json(products)
     console.log('sent products')
 })
