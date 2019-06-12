@@ -1,11 +1,16 @@
 import React from 'react';
-// import { Route } from 'react-router-dom';
 import './HomePage.scss';
+
+import SlideableProductContainer from './SlideableProductContainer';
 
 const HomePage = () => {
   return (
     <div className='HomePage__container'>
       
+      <SlideableProductContainer
+        header='Top Products'
+      />
+
     </div>
   );
 }
