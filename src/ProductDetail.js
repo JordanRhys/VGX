@@ -32,7 +32,7 @@ const ProductDetail = (props) => {
     }
 
     return(
-        <main className='ProductDetail__container'>
+        <main className='ProductDetail__container Universal__box-shadow'>
             {(_loading) ? 
             <h1>Loading...</h1> : 
             
@@ -62,11 +62,18 @@ const ProductDetail = (props) => {
                             <span className='ProductDetail__price'> £{product.exch}</span></p>
                         ) : null}
                     </div>
+
                     <div className='ProductDetail__stock-box'>
-                        {(product.stock > 0) ?
-                        <p className='ProductDetail__stock'>{product.stock} in Stock</p> :
-                        <p className='ProductDetail__stock'>Out of stock</p>}
+                        {(product.stock === 0) ? (
+                            <p className='ProductDetail__stock'>Out of stock</p>
+                        ) : (product.stock > 9) ? (
+                            <p className='ProductDetail__stock'>10+ Available</p>
+                        ) : (
+                            <p className='ProductDetail__stock'>{product.stock} in Stock</p>
+                        )}
                     </div>
+
+                    <button className='ProductDetail__add-button'>Add to Basket</button>
                 </div>
             </div> }
         </main>
