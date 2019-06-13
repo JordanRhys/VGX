@@ -21,6 +21,22 @@
     &__name {
         font-size: .9rem;
         width: 9rem;
-        margin: .5rem 0;
+        margin: .2rem 0;
+    }
+
+    &__sell {
+        font-size: .9rem;
+        font-weight: 600;
+        margin: 0;
+        color: var(--color-primary-dark);
+    }
+
+    &__trade {
+        font-size: .8rem;
+        margin: 0;
+    }
+
+    &__trade-container {
+        margin-top: .2rem;
     }
 }

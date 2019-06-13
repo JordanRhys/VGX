@@ -6,6 +6,7 @@ import './Variables.scss';
 
 import HeaderBar from './HeaderBar';
 import HomePage from './HomePage';
+import ProductDetail from './ProductDetail';
 
 const App = () => {
   return (
@@ -13,8 +14,14 @@ const App = () => {
       <HeaderBar/>
       
       <Route
+        exact
         path='/'
         component={HomePage}
+      />
+
+      <Route
+        path='/product/:itemID'
+        component={ProductDetail}
       />
     </div>
   );

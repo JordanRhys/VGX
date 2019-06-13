@@ -14,7 +14,7 @@ const SlideableProductContainer = (props) => {
     })
 
     const FetchProducts = () => {
-        fetch('/server/topproducts', {
+        fetch(props.fetch, {
             headers: {
                 Accept: 'application/json'
             },
@@ -34,9 +34,13 @@ const SlideableProductContainer = (props) => {
     const productMap = products.map((product) => {
         return(
             <ProductThumbnail
-                itemID={product.itemID}
-                name={product.name}
-                key={product.itemID}
+                itemID={product.product.itemID}
+                name={product.product.name}
+                category={product.product.category}
+                sell={product.product.sell}
+                buy={product.product.buy}
+                exch={product.product.exch}
+                key={product.product.itemID}
             />
         )
     })

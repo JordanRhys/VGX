@@ -10,6 +10,7 @@ if (!userArgs[0].startsWith('mongodb')) {
 var async = require('async')
 var Product = require('./models/product')
 var Category = require('./models/category')
+var TopProduct = require('./models/top_product')
 
 var mongoose = require('mongoose');
 var mongoDB = 'mongodb+srv://jordan:uHyWLakjZp3TQvbf@cluster0-eyvt0.mongodb.net/VGX?retryWrites=true&w=majority';
@@ -20,6 +21,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 var products = []
 var categories = []
+var topproducts = []
 
 function productCreate(itemID, name, desc, category, release_date, sell, buy, exch, newbool, stock, cb) {
   productdetail = { 
@@ -64,6 +66,23 @@ function categoryCreate(name, cb) {
   }  );
 }
 
+function topProductCreate(product, cb) {
+  detail = {
+    product: product
+  }
+
+  var topproduct = new TopProduct(detail);
+  topproduct.save(function (err) {
+    if (err) {
+      cb(err, null)
+      return
+    }
+    console.log('New Top Product: ' + topproduct);
+    topproducts.push(topproduct)
+    cb(null, topproduct)
+  });
+}
+
 function createProducts(cb) {
     async.parallel([
         function(callback) {
@@ -83,6 +102,24 @@ function createProducts(cb) {
         cb);
 }
 
+function createTopProducts(cb) {
+  async.parallel([
+    function(callback) {
+      topProductCreate('5d00dc4023562626537a73ae', callback)
+    },
+    function(callback) {
+      topProductCreate('5d00dc4023562626537a73af', callback)
+    },
+    function(callback) {
+      topProductCreate('5d00dc4023562626537a73b0', callback)
+    },
+    function(callback) {
+      topProductCreate('5d00dc4023562626537a73b1', callback)
+    },
+  ],
+  cb);
+}
+
 function createCategories(cb) {
   async.parallel([
     function(callback) {
@@ -99,7 +136,7 @@ function createCategories(cb) {
 }
 
 async.series([
-    createProducts,
+    createTopProducts,
 ],
 // Optional callback
 function(err, results) {

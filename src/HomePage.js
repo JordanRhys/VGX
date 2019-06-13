@@ -9,6 +9,7 @@ const HomePage = () => {
       
       <SlideableProductContainer
         header='Top Products'
+        fetch='/server/topproducts'
       />
 
     </div>
