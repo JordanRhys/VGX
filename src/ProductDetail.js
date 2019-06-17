@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-
+import {Link} from 'react-router-dom';
 import './ProductDetail.scss';
+import LoadIcon from './LoadIcon';
 
 const ProductDetail = (props) => {
     const [product, setProduct] = useState('');
@@ -34,7 +35,7 @@ const ProductDetail = (props) => {
     return(
         <main className='ProductDetail__container Universal__box-shadow'>
             {(_loading) ? 
-            <h1>Loading...</h1> : 
+            <LoadIcon/> :
             
             <div className='ProductDetail__detail-container'>
                 <img
@@ -44,21 +45,18 @@ const ProductDetail = (props) => {
                 />
                 <div className='ProductDetail__details'>
                     <h2 className='ProductDetail__name'>{product.name}</h2>
-                    <p className='ProductDetail__category'>{product.category.name}</p>
+                    <Link to={'/category/' + product.category.spaceless_name}>
+                        <p className='ProductDetail__category'>{product.category.name}</p>
+                    </Link>
                     <div className='ProductDetail__price-container'>
                         <p className='ProductDetail__text'>We Sell for: 
                         <span className='ProductDetail__price'> £{product.sell}</span></p>
                         {(product.buy) ? (
-                            <p className='ProductDetail__text'>We Buy for:</p>
-                        ) : (product.exch) ? (
-                            <p className='ProductDetail__text'>We Buy for:</p>
-                        ) : null}
-                        {(product.buy) ? (
-                            <p className='ProductDetail__text'>Cash: 
+                            <p className='ProductDetail__text'>Trade in for Cash: 
                             <span className='ProductDetail__price'> £{product.buy}</span></p>
                         ) : null}
                         {(product.exch) ? (
-                            <p className='ProductDetail__text'>Exchange: 
+                            <p className='ProductDetail__text'>Trade in for Exchange: 
                             <span className='ProductDetail__price'> £{product.exch}</span></p>
                         ) : null}
                     </div>

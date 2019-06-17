@@ -1,0 +1,33 @@
+.NavBar {
+
+    &__greyout {
+        background-color: rgba(0,0,0,.1);
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        top: 3.3rem;
+        left: 0;
+        z-index: 5;
+    }
+
+    &__container {
+        position: absolute;
+        width: 15rem;
+        height: 100vh;
+        background-color: var(--color-primary);
+        z-index: 10;
+    }
+
+    &__list {
+        list-style: none;
+        padding: 0 1rem;
+
+        & a {
+            display: block;
+
+            &:not(:last-child) {
+                margin-bottom: .5rem;
+            }
+        }
+    }
+}

@@ -19,7 +19,7 @@
 
     &__container {
         width: 100vw;
-        padding: .2rem;
+        // padding: .2rem;
         background-color: var(--color-white);
     }
 
@@ -35,6 +35,8 @@
 
     &__image {
         max-width: 80vw;
+        max-height: 80vw;
+        object-fit: contain;
     }
 
     &__name {

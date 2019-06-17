@@ -16,6 +16,7 @@
     &__image {
         width: 7rem;
         height: 7rem;
+        object-fit: contain;
     }
 
     &__name {

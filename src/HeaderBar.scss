@@ -1,17 +1,11 @@
 .HeaderBar {
 
     &__container {
+        width: 100%;
         display: flex;
         background-color: #F7A727;
         align-items: center;
-        border-bottom: .1rem solid #E59500;
-        margin-bottom: .5rem;
-    }
-
-    &__nav-icon {
-        width: 3rem;
-        height: 3rem;
-        border: 1px solid #4F5D75;
-        margin: .5rem;
+        position: fixed;
+        z-index: 15;
     }
 }

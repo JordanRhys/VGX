@@ -85,17 +85,14 @@ function topProductCreate(product, cb) {
 
 function createProducts(cb) {
     async.parallel([
+        // function(callback) {
+        //   productCreate('5055856420354', 'RAGE 2', false, '5d024cb81c9d44000079b49d', false, 40, 26, 30, false, 4, callback);
+        // },
+        // function(callback) {
+        //   productCreate('5055856420187', 'RAGE 2', false, '5d00db1d22ff61263117a642', false, 40, 26, 30, false, 7, callback);
+        // },
         function(callback) {
-          productCreate('PS4500REGBLKA', 'PlayStation 4 500GB Black, A Grade', false, '5d00db1d22ff61263117a641', false, 175, 101, 122, false, 5, callback);
-        },
-        function(callback) {
-          productCreate('PS4500REGBLKB', 'PlayStation 4 500GB Black, B Grade', false, '5d00db1d22ff61263117a641', false, 165, 95, 115, false, 3, callback);
-        },
-        function(callback) {
-          productCreate('PS4500REGBLKC', 'PlayStation 4 500GB Black, C Grade', false, '5d00db1d22ff61263117a641', false, 155, 89, 108, false, 8, callback);
-        },
-        function(callback) {
-          productCreate('PS4500REGBLKN', 'PlayStation 4 500GB Black, New', false, '5d00db1d22ff61263117a641', false, 195, false, false, true, 2, callback);
+          productCreate('045496420055', 'Legend of Zelda: Breath of the Wild', false, '5d024cf41c9d44000079b4a0', false, 45, 30, 33, false, 15, callback);
         },
         ],
         // optional callback
@@ -136,7 +133,7 @@ function createCategories(cb) {
 }
 
 async.series([
-    createTopProducts,
+    createProducts,
 ],
 // Optional callback
 function(err, results) {

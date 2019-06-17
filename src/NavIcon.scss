@@ -1,0 +1,24 @@
+.NavIcon {
+
+    &__container {
+        width: 2rem;
+        height: 1.8rem;
+        margin: .5rem .8rem;
+    }
+
+    &__icon-box {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    &__line {
+        width: 1.5rem;
+        height: .2rem;
+        border-radius: .4rem;
+        background-color: var(--color-grey-dark);
+        display: block;
+    }
+}
