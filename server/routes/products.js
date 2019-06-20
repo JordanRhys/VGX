@@ -55,8 +55,6 @@ router.get('/categories', (req, res, next) => {
 
 router.get('/category/:name', (req, res, next) => {
 
-
-
     var cat;
     Category
         .findOne({"spaceless_name": req.params.name})
@@ -91,6 +89,28 @@ router.get('/category/:name', (req, res, next) => {
             console.log(err);
         }
     });
+})
+
+router.get('/search/:search', (req, res, next) => {
+    const similar = req.params.search;
+    console.log(similar);
+    Product
+        .find({"name": {$regex: similar, $options: 'i'}})
+        .populate('category')
+        .exec((err, result) => {
+            if (!err) {
+                if (result === undefined || result.length === 0) {
+                    console.log('Search is Undefined');
+                    res.json({
+                        "name": "Products not found"
+                    })
+                } else {
+                    res.json(result);
+                }
+            } else {
+                console.log(err);
+            }
+        })
 })
 
 router.get('/', function(req, res, next) {

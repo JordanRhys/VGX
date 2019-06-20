@@ -2,10 +2,21 @@
 
     &__container {
         width: 100%;
-        display: flex;
-        background-color: #F7A727;
-        align-items: center;
         position: fixed;
         z-index: 15;
+    }
+
+    &__bar {
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #F7A727;
+    }
+
+    &__left, &__right {
+        width: 6rem;
+        display: flex;
+        align-items: center;
     }
 }

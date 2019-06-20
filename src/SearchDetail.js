@@ -1,20 +1,20 @@
-import React, { useState, useEffect} from 'react';
-import './CategoryDetail.scss';
+import React, {useState, useEffect} from 'react';
+import './SearchDetail.scss';
 
 import ProductListing from './ProductListing';
 import LoadIcon from './LoadIcon';
 
-const CategoryDetail = (props) => {
+const SearchDetail = (props) => {
     const [products, setProducts] = useState([])
     const [_loading, _setLoading] = useState(true)
 
     useEffect(() => {
-        _setLoading(true);
-        fetchProducts();
-    }, [props.match.params.name])
+        fetchProducts()
+    }, [props.match.params.search])
 
     const fetchProducts = () => {
-        fetch(('/server/category/' + props.match.params.name), {
+        console.log('/server/search/' + props.match.params.search)
+        fetch(('/server/search/' + props.match.params.search), {
             headers: {
                 Accept: 'application/json'
             }
@@ -39,11 +39,11 @@ const CategoryDetail = (props) => {
     return(
         (_loading) ? 
         <LoadIcon/> : (
-        <section className='CategoryDetail__container'>
+        <section className='SearchDetail__container'>
             {productList}
         </section>
         )
     )
 }
 
-export default CategoryDetail;
+export default SearchDetail;

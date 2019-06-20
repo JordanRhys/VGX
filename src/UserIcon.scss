@@ -1,0 +1,10 @@
+.UserIcon {
+
+    &__svg {
+        display: block;
+        width: 1.8rem;
+        height: 1.8rem;
+        margin: .6rem;
+        fill: var(--color-grey-dark);
+    }
+}

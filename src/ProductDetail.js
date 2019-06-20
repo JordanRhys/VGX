@@ -11,7 +11,7 @@ const ProductDetail = (props) => {
         if (_loading) {
             loadProduct(props.match.params.itemID)
         }
-    })
+    }, [props.match.params.itemID])
 
     const loadProduct = (itemID) => {
         fetch('/server/product/' + itemID, {

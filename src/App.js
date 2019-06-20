@@ -8,6 +8,7 @@ import HeaderBar from './HeaderBar';
 import HomePage from './HomePage';
 import ProductDetail from './ProductDetail';
 import CategoryDetail from './CategoryDetail';
+import SearchDetail from './SearchDetail';
 
 const App = () => {
   return (
@@ -28,6 +29,11 @@ const App = () => {
       <Route
         path='/category/:name'
         component={CategoryDetail}
+      />
+
+      <Route
+        path='/search/:search'
+        component={SearchDetail}
       />
     </div>
   );

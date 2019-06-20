@@ -34,9 +34,10 @@
     }
 
     &__image {
-        max-width: 80vw;
-        max-height: 80vw;
+        max-width: 18rem;
+        max-height: 18rem;
         object-fit: contain;
+        margin: 1rem;
     }
 
     &__name {

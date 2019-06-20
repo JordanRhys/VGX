@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Logo.scss';
 
-const Logo = () => {
+const Logo = (props) => {
   return (
-    <Link to="/">
+    <Link to="/" onClick={props.closeAll}>
       <div className='Logo__container'>
           <h1 className='Logo__header'>VGX</h1>
       </div>
