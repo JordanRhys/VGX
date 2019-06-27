@@ -7,9 +7,10 @@
         padding: .5rem;
         text-align: center;
         margin: 0;
+        font-size: var(--font-size-smaller);
 
         &:not(:last-child) {
-            border-right: .1rem solid var(--color-grey-lighter);
+            border-right: .1rem solid var(--color-grey-light);
         }
     }
 
@@ -20,20 +21,11 @@
     }
 
     &__name {
-        font-size: .9rem;
         width: 9rem;
         margin: .2rem 0;
     }
 
-    &__sell {
-        font-size: .9rem;
-        font-weight: 600;
-        margin: 0;
-        color: var(--color-primary-dark);
-    }
-
-    &__trade {
-        font-size: .8rem;
+    &__sell, &__trade {
         margin: 0;
     }
 

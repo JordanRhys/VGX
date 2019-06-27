@@ -7,8 +7,7 @@ import './Variables.scss';
 import HeaderBar from './HeaderBar';
 import HomePage from './HomePage';
 import ProductDetail from './ProductDetail';
-import CategoryDetail from './CategoryDetail';
-import SearchDetail from './SearchDetail';
+import SearchList from './SearchList';
 
 const App = () => {
   return (
@@ -27,13 +26,13 @@ const App = () => {
       />
 
       <Route
-        path='/category/:name'
-        component={CategoryDetail}
+        path='/category/:search'
+        render={(props) => (<SearchList {...props} path='/server/category/' />)}
       />
 
       <Route
         path='/search/:search'
-        component={SearchDetail}
+        render={(props) => (<SearchList {...props} path='/server/search/' />)}
       />
     </div>
   );

@@ -19,7 +19,6 @@
 
     &__container {
         width: 100vw;
-        // padding: .2rem;
         background-color: var(--color-white);
     }
 
@@ -41,12 +40,8 @@
     }
 
     &__name {
-        font-size: var(--font-size-large);
+        font-size: var(--font-size-semilarge);
         margin: 0 .5rem;
-    }
-
-    &__price {
-        font-weight: 600;
     }
 
     &__price-container {
@@ -55,7 +50,7 @@
 
     &__stock {
         color: var(--color-primary-dark);
-        font-size: var(--font-size-large);
+        font-size: var(--font-size-semilarge);
         margin: .2rem 0;
     }
 
@@ -67,11 +62,5 @@
 
     &__text {
         margin: .2rem 0;
-
-        &:first-child {
-            color: var(--color-primary-dark);
-            margin: .5rem 0;
-            font-size: var(--font-size-large);
-        }
     }
 }

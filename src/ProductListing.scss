@@ -2,6 +2,7 @@
 
     &__container {
         display: flex;
+        font-size: var(--font-size-small);
         border-bottom: .1rem solid var(--color-grey-light);
     }
 
@@ -28,6 +29,7 @@
 
     &__header {
         font-size: var(--font-size-small);
+        font-weight: 400;
         margin: 0;
     }
 
@@ -43,7 +45,7 @@
         padding-right: .8rem;
 
         & p {
-            font-size: var(--font-size-small);
+            font-size: var(--font-size-smaller);
             margin: .1rem 0;
         }
     }

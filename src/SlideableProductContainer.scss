@@ -6,7 +6,8 @@
     flex-direction: column;
 
     &__header {
-        font-size: 1.2rem;
+        font-size: var(--font-size-large);
+        font-weight: 600;
         color: var(--color-primary-dark);
         border-bottom: .1rem solid var(--color-grey-light);
         margin: 0;
