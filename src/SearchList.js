@@ -128,6 +128,77 @@ const SearchList = (props) => {
         setFilteredProducts([]);
     }
 
+    const sortItems = (sort) => {
+        return new Promise((resolve, reject) => {
+            var items;
+            var filtered;
+            if (filteredProducts.length > 0) {
+                items = filteredProducts;
+                filtered = true;
+            } else {
+                items = products;
+                filtered = false;
+            }
+            if (sort === 'nameAsc') {
+                items.sort(function(a, b) {
+                    var nameA = a.name.toLowerCase();
+                    var nameB = b.name.toLowerCase();
+                    if (nameA < nameB) {
+                        return -1;
+                    } else if (nameA > nameB) {
+                        return 1;
+                    } else {
+                        return 0;
+                    }
+                })
+            }
+    
+            if (sort === 'nameDes') {
+                items.sort(function(a, b) {
+                    var nameA = a.name.toLowerCase();
+                    var nameB = b.name.toLowerCase();
+                    if (nameA > nameB) {
+                        return -1;
+                    } else if (nameA < nameB) {
+                        return 1;
+                    } else {
+                        return 0;
+                    }
+                })
+            }
+    
+            if (sort === 'priceAsc') {
+                items.sort(function(a, b) {
+                    return a.sell - b.sell;
+                })
+            }
+    
+            if (sort === 'priceDes') {
+                items.sort(function(a, b) {
+                    return b.sell - a.sell
+                })
+            }    
+            console.log(items);
+            resolve({
+                items: items,
+                filtered: filtered
+            });
+            _setLoading(true);
+        }).then((obj) => {setSortedItems(obj)})
+    }
+
+    const setSortedItems = (obj) => {
+        console.log(obj)
+        if (obj.filtered) {
+            console.log(obj.items);
+            setFilteredProducts(obj.items);
+        } else {
+            console.log(obj.items);
+            setProducts(obj.items);
+        }
+        _setLoading(false);
+    }
+
     const productList = products.map((product) => (
         <ProductListing product={product} key={product.itemID}/>
     ))
@@ -148,6 +219,7 @@ const SearchList = (props) => {
                         categoryList={categoryList}
                         applyFilters={(obj) => (applyFilters(obj))}
                         resetFilters={resetFilters}
+                        sortItems={sortItems}
                     />
                     {productList}
                 </section>
@@ -164,6 +236,7 @@ const SearchList = (props) => {
                         categoryList={categoryList}
                         applyFilters={(obj) => (applyFilters(obj))}
                         resetFilters={resetFilters}
+                        sortItems={(sortOrder) => (sortItems(sortOrder))}
                     />
                     {filteredProductList}
                 </section>

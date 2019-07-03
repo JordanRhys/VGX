@@ -13,7 +13,17 @@ const SearchFilter = (props) => {
         if (filterOpen) {
             setFilterOpen(false);
         } else {
+            setSortOpen(false);
             setFilterOpen(true);
+        }
+    }
+
+    const toggleSort = () => {
+        if (sortOpen) {
+            setSortOpen(false);
+        } else {
+            setFilterOpen(false);
+            setSortOpen(true);
         }
     }
 
@@ -59,6 +69,11 @@ const SearchFilter = (props) => {
         props.resetFilters();
     }
 
+    const sortItems = (sort) => {
+        toggleSort();
+        props.sortItems(sort);
+    }
+
     // <li> for each Unselected category
     const categoryList = props.categoryList.filter((allcat) => (
         selectedCategories.indexOf(allcat) === -1
@@ -95,10 +110,14 @@ const SearchFilter = (props) => {
             >
                 Filter
             </div>
-            <div className='SearchFilter__sort'>
+            <div
+                className='SearchFilter__sort'
+                onClick={toggleSort}
+            >
                 Sorting
             </div>
 
+            {/* FILTER OPEN */}
             {(filterOpen) ? (
                 <div className='SearchFilter__filter-panel'>
 
@@ -157,6 +176,36 @@ const SearchFilter = (props) => {
                         </button>
                     </div>
                 </div>
+            ) : null}
+
+            {/* SORT OPEN */}
+            {(sortOpen) ? (
+                <ul className='SearchFilter__sort-container'>
+                    <li 
+                        className='SearchFilter__sort-item'
+                        onClick={() => (sortItems('nameAsc'))}
+                    >
+                        <span>A&uarr;</span>   Name: Ascending
+                    </li>
+                    <li 
+                        className='SearchFilter__sort-item'
+                        onClick={() => (sortItems('nameDes'))}
+                    >
+                        <span>A&darr;</span>   Name: Descending
+                    </li>
+                    <li 
+                        className='SearchFilter__sort-item'
+                        onClick={() => (sortItems('priceAsc'))}
+                    >
+                        <span>£&uarr;</span>   Price: Ascending
+                    </li>
+                    <li 
+                        className='SearchFilter__sort-item'
+                        onClick={() => (sortItems('priceDes'))}
+                    >
+                        <span>£&darr;</span>   Price: Descending
+                    </li>
+                </ul>
             ) : null}
         </div>
     )
