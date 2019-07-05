@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import {Redirect} from 'react-router-dom';
 import './HeaderBar.scss';
 
 import Logo from './Logo';
@@ -10,7 +9,7 @@ import BasketIcon from './BasketIcon';
 import NavBar from './NavBar';
 import SearchBar from './SearchBar';
 
-const HeaderBar = () => {
+const HeaderBar = (props) => {
   const [categories, setCategories] = useState([]);
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
@@ -63,23 +62,22 @@ const HeaderBar = () => {
     setSearchOpen(false);
   }
 
-  // const changeRedirect = (path) => {
-  //   closeAll()
-  //   setRedirect(path);
-  // }
-
   return (
     <div className='HeaderBar__container Universal__box-shadow'>
       <div className='HeaderBar__bar'>
+
         <div className='HeaderBar__left'>
           <NavIcon menuOpen={menuOpen} toggleMenu={toggleMenu}/>
           <SearchIcon searchOpen={searchOpen} toggleSearch={toggleSearch}/>
         </div>
+
         <Logo closeAll={closeAll}/>
+
         <div className='HeaderBar__right'>
           <UserIcon/>
-          <BasketIcon/>
+          <BasketIcon basketItems={props.basketItems}/>
         </div>
+        
       </div>
       {(menuOpen) ? (
         <NavBar categories={categories} toggleOpen={toggleMenu}/>
@@ -87,11 +85,6 @@ const HeaderBar = () => {
       {(searchOpen) ? (
         <SearchBar toggleSearch={toggleSearch}/>
       ) : null}
-
-      {/* REDIRECT AFTER SEARCH */}
-      {/* {(redirect) ? (
-        <Redirect to={redirect}/>
-      ) : null} */}
     </div>
   );
 }

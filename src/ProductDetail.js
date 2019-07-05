@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {Link} from 'react-router-dom';
 import './ProductDetail.scss';
 import LoadIcon from './LoadIcon';
+import AddToBasket from './AddToBasket';
 
 const ProductDetail = (props) => {
     const [product, setProduct] = useState('');
@@ -41,7 +42,7 @@ const ProductDetail = (props) => {
                 <img
                     className='ProductDetail__image'
                     src={process.env.PUBLIC_URL + '/products/' + product.itemID + '.png'}
-                    alt={product.itemID + ' Image'}
+                    alt={product.name + ' Image'}
                 />
                 <div className='ProductDetail__details'>
                     <h2 className='ProductDetail__name'>{product.name}</h2>
@@ -71,7 +72,8 @@ const ProductDetail = (props) => {
                         )}
                     </div>
 
-                    <button className='ProductDetail__add-button'>Add to Basket</button>
+                    <AddToBasket itemID={product.itemID} />
+
                 </div>
             </div> }
         </main>

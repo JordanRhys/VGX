@@ -103,9 +103,33 @@ router.get('/search/:search', (req, res, next) => {
                     console.log('Search is Undefined');
                     res.json({
                         "name": "Products not found"
-                    })
+                    });
                 } else {
                     res.json(result);
+                }
+            } else {
+                console.log(err);
+            }
+        })
+})
+
+router.get('/basket/:items', (req, res, next) => {
+    const items = req.params.items;
+    const split = items.split(',');
+    console.log(split);
+
+    Product
+        .find({"itemID": {$in: split}})
+        .populate('category')
+        .exec((err, results) => {
+            if (!err) {
+                if (results === undefined || results.length === 0) {
+                    console.log('Search is Undefined or Length 0')
+                    res.json({
+                        "name": "Products not found"
+                    });
+                } else {
+                    res.json(results);
                 }
             } else {
                 console.log(err);
