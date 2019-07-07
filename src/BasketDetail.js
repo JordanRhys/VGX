@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { BasketContext } from './App';
 import './BasketDetail.scss';
 
 import LoadIcon from './LoadIcon';
 
 const BasketDetail = () => {
+    const api = useContext(BasketContext);
+
     const [_loading, _setLoading] = useState(true);
     const [products, setProducts] = useState([]);
 
@@ -44,6 +47,23 @@ const BasketDetail = () => {
         });
     }
 
+    const removeItem = (itemID) => {
+        let basket = JSON.parse(localStorage.getItem('basket'));
+        let newBasket = basket.filter((product) => (
+            product !== itemID
+        ));
+        console.log(newBasket);
+        localStorage.setItem('basket', JSON.stringify(newBasket));
+
+        let filtered = products.filter((product) => (
+            product.itemID !== itemID
+        ))
+
+        setProducts(filtered);
+
+        api();
+    }
+
     const productList = products.map((product) => (
         <li className='BasketDetail__list-item' key={product.itemID}>
             <Link to={'/product/' + product.itemID}>
@@ -62,14 +82,19 @@ const BasketDetail = () => {
                 </Link>
                 <div>
                     <p className='BasketDetail__price'>Price: <span className='BasketDetail__price-span'>£{product.sell}</span></p>
-                    <p className='BasketDetail__remove'>Remove</p>
+                    <p
+                        className='BasketDetail__remove'
+                        onClick={() => removeItem(product.itemID)}
+                    >
+                        Remove
+                    </p>
                 </div>
             </div>
         </li>
     ));
 
     const price = products.reduce((prev, cur) => prev + cur.sell, 0);
-    const delivery = (price >= 50) ? 0 : 1.50;
+    const delivery = (price >= 50) ? 0 : 2.50;
     const total = price + delivery;
 
     return (
