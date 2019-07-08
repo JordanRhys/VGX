@@ -20,7 +20,7 @@ const AddToBasket = (props) => {
         } else {
             setInBasket(false);
         }
-    }, [inBasket]);
+    }, [inBasket, props.itemID]);
 
     const addToBasket = (itemID) => {
 
