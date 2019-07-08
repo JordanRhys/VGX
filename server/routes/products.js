@@ -59,9 +59,6 @@ router.get('/product/similar/:category/:names', (req, res, next) => {
                         ids.push(product.itemID)
                     }
                 });
-                console.log('######################################');
-                console.log(filtered);
-                console.log('######################################');
                 res.json(filtered);
             }
         } else {

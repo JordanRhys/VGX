@@ -45,14 +45,18 @@ const SimilarItems = (props) => {
         }
     });
 
-    return (
-        <div className='SimilarItems'>
-            <h2 className='SimilarItems__header'>You may also like...</h2>
-            <div className='SimilarItems__products-container'>
-                {productMap}
+    if (products) {
+        return (
+            <div className='SimilarItems'>
+                <h2 className='SimilarItems__header'>You may also like...</h2>
+                <div className='SimilarItems__products-container'>
+                    {productMap}
+                </div>
             </div>
-        </div>
-    );
+        )
+    } else {
+        return null;
+    };
 }
 
 export default SimilarItems;
