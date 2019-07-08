@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { BasketContext } from './App';
 import './BasketDetail.scss';
 
+import { toCurrency } from './helpers';
+
 import LoadIcon from './LoadIcon';
 
 const BasketDetail = () => {
@@ -94,8 +96,13 @@ const BasketDetail = () => {
     ));
 
     const price = products.reduce((prev, cur) => prev + cur.sell, 0);
+    const priceString = toCurrency(price);
+
     const delivery = (price >= 50) ? 0 : 2.50;
+    const deliveryString = toCurrency(delivery);
+
     const total = price + delivery;
+    const totalString = toCurrency(total);
 
     return (
         <section className='BasketDetail__container'>
@@ -106,17 +113,17 @@ const BasketDetail = () => {
             <div className='BasketDetail__total-container'>
                 <div className='BasketDetail__row'>
                     <p className='BasketDetail__text'>Price:</p>
-                    <p className='BasketDetail__value'>£{price}</p>
+                    <p className='BasketDetail__value'>£{priceString}</p>
                 </div>
                 <div className='BasketDetail__row'>
                     <p className='BasketDetail__text'>Delivery:</p>
                     <p className='BasketDetail__value'>
-                        {(delivery === 0) ? 'Free' : '£' + delivery}
+                        {(delivery === 0) ? 'Free' : '£' + deliveryString}
                     </p>
                 </div>
                 <div className='BasketDetail__row'>
                     <p className='BasketDetail__text'>Grand Total:</p>
-                    <p className='BasketDetail__value'>£{total}</p>
+                    <p className='BasketDetail__value'>£{totalString}</p>
                     <button className='BasketDetail__checkout'>Checkout</button>
                 </div>
             </div>
