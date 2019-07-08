@@ -19,13 +19,13 @@
 
     &__container {
         width: 100vw;
-        background-color: var(--color-white);
     }
-
+    
     &__detail-container {
         display: flex;
         flex-direction: column;
         align-items: center;
+        background-color: var(--color-white);
     }
 
     &__details {

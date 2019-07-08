@@ -15,4 +15,6 @@ var ProductSchema = new Schema({
     stock: {type: Number, required: true, min: 0},
 });
 
+ProductSchema.index({ name: 'text' });
+
 module.exports = mongoose.model('Product', ProductSchema);

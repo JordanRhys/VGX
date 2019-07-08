@@ -7,6 +7,8 @@ var Product = require('../models/product');
 var TopProduct = require('../models/top_product');
 var Category = require('../models/category');
 
+var async = require('async');
+
 router.get('/topproducts', (req, res, next) => {
     TopProduct.find().populate('product').exec((err, results) => {
         console.log(results)
@@ -17,6 +19,55 @@ router.get('/topproducts', (req, res, next) => {
         }
     })
     
+})
+
+router.get('/product/similar/:category/:names', (req, res, next) => {
+    const namesSplit = req.params.names.split(',');
+    const namesSpaced = namesSplit.join(' ');
+    console.log(namesSpaced);
+
+    async.parallel({
+        byName: function(callback) {
+            Product
+                .find({$text: {$search: namesSpaced}})
+                .populate('category')
+                .limit(5)
+                .exec(callback);
+        },
+        byCat: function(callback) {
+            Product
+                .find({"category": req.params.category})
+                .populate('category')
+                .limit(5)
+                .exec(callback);
+        }
+    }, function(err, results) {
+        console.log(results)
+        if (!err) {
+            if (results === undefined) {
+                console.log(results);
+                res.json({
+                    "name": "Item not found"
+                })
+            } else {
+                let joined = results.byName.concat(results.byCat);
+                let ids = [];
+                let filtered = [];
+                joined.map((product) => {
+                    if (ids.indexOf(product.itemID) === -1) {
+                        filtered.push(product)
+                        ids.push(product.itemID)
+                    }
+                });
+                console.log('######################################');
+                console.log(filtered);
+                console.log('######################################');
+                res.json(filtered);
+            }
+        } else {
+            console.log(err)
+        }
+    })
 })
 
 router.get('/product/:itemID', (req, res, next) => {

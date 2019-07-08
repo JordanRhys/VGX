@@ -3,15 +3,14 @@ import {Link} from 'react-router-dom';
 import './ProductDetail.scss';
 import LoadIcon from './LoadIcon';
 import AddToBasket from './AddToBasket';
+import SimilarItems from './SimilarItems';
 
 const ProductDetail = (props) => {
     const [product, setProduct] = useState('');
     const [_loading, _setLoading] = useState(true);
 
     useEffect(() => {
-        if (_loading) {
-            loadProduct(props.match.params.itemID)
-        }
+        loadProduct(props.match.params.itemID)
     }, [props.match.params.itemID])
 
     const loadProduct = (itemID) => {
@@ -76,6 +75,14 @@ const ProductDetail = (props) => {
 
                 </div>
             </div> }
+
+            {(_loading) ? (
+                null
+            ) : (
+                <SimilarItems
+                    product={product}
+                />
+            )}
         </main>
     )
 }

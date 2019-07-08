@@ -4,7 +4,6 @@ import './SlideableProductContainer.scss';
 import ProductThumbnail from './ProductThumbnail';
 
 const SlideableProductContainer = (props) => {
-
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
