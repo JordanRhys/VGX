@@ -51,6 +51,7 @@ const SearchList = (props) => {
                 if (cats.indexOf(product.category.name) === -1) {
                     cats.push(product.category.name);
                 }
+                return null;
             });
             cats.sort();
             resolve(cats);

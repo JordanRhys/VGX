@@ -30,8 +30,6 @@ const App = () => {
     } 
   }
 
-  const api = { updateBasketItems };
-
   return (
     <BasketContext.Provider value={updateBasketItems}>
       <div className='App__container'>

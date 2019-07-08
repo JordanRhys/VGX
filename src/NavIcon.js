@@ -1,8 +1,6 @@
 import React from 'react';
 import './NavIcon.scss';
 
-import NavBar from './NavBar';
-
 const NavIcon = (props) => {
 
     return(

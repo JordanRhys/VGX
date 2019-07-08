@@ -42,6 +42,8 @@ const SimilarItems = (props) => {
                 exch={product.exch}
                 key={'ProductThumbnail' + product.itemID}
             />
+        } else {
+            return null;
         }
     });
 
