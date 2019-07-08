@@ -1,7 +1,15 @@
 .BasketDetail {
+    
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     &__container {
         width: 100%;
+        background-color: var(--color-white);
+        padding: .5rem;
+        font-size: var(--font-size-small);
     }
     
     &__list {
@@ -58,13 +66,6 @@
         align-self: flex-end;
     }
 
-    &__total-container {
-        width: 100%;
-        background-color: var(--color-white);
-        padding: .5rem;
-        font-size: var(--font-size-small);
-    }
-
     &__row {
         display: flex;
         justify-content: space-between;
@@ -88,5 +89,11 @@
         color: var(--color-white);
         font-size: var(--font-size-reg);
         font-weight: 600;
+    }
+
+    &__svg {
+        width: 10rem;
+        fill: var(--color-grey-midlight);
+        padding-top: 5rem;
     }
 }
