@@ -208,37 +208,48 @@ const SearchList = (props) => {
         <ProductListing product={product} key={product.itemID}/>
     ))
 
+    if (_loading) {
+        return (
+            <LoadIcon/>
+        );
 
-    if (filteredProducts.length === 0) {
-        return(
-            (_loading) ? (
-                    <LoadIcon/>
-                ) : (
-                <section className='SearchDetail__container'>
-                    <p className='SearchDetail__text'>
-                        Your search "<span className='SearchDetail__bold'>
-                            {props.match.params.search}
-                        </span>" returned 0 results.
-                    </p>
-                </section>
-            )
+    } else if (products.length === 0) {
+        return (
+            <section className='SearchDetail__container'>
+                <p className='SearchDetail__text'>
+                    Your search "<span className='SearchDetail__bold'>
+                        {props.match.params.search}
+                    </span>" returned 0 results.
+                </p>
+            </section>
         )
+
+    } else if (filteredProducts.length === 0) {
+        return(
+            <section className='SearchDetail__container'>
+                <SearchFilter
+                    products={products}
+                    categoryList={categoryList}
+                    applyFilters={(obj) => (applyFilters(obj))}
+                    resetFilters={resetFilters}
+                    sortItems={(sortOrder) => (sortItems(sortOrder))}
+                />
+                {productList}
+            </section>
+        )
+        
     } else {
         return(
-            (_loading) ? (
-                    <LoadIcon/>
-                ) : (
-                <section className='SearchDetail__container'>
-                    <SearchFilter
-                        products={products}
-                        categoryList={categoryList}
-                        applyFilters={(obj) => (applyFilters(obj))}
-                        resetFilters={resetFilters}
-                        sortItems={(sortOrder) => (sortItems(sortOrder))}
-                    />
-                    {filteredProductList}
-                </section>
-            )
+            <section className='SearchDetail__container'>
+                <SearchFilter
+                    products={products}
+                    categoryList={categoryList}
+                    applyFilters={(obj) => (applyFilters(obj))}
+                    resetFilters={resetFilters}
+                    sortItems={(sortOrder) => (sortItems(sortOrder))}
+                />
+                {filteredProductList}
+            </section>
         )
     }
 }
