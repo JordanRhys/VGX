@@ -5,5 +5,15 @@
         background-color: var(--color-white);
         display: flex;
         flex-direction: column;
+        padding: .5rem;
+    }
+
+    &__text {
+        width: 100%;
+        text-align: center;
+    }
+
+    &__bold {
+        font-weight: 600;
     }
 }

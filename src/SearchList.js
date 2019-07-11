@@ -215,14 +215,11 @@ const SearchList = (props) => {
                     <LoadIcon/>
                 ) : (
                 <section className='SearchDetail__container'>
-                    <SearchFilter
-                        products={products}
-                        categoryList={categoryList}
-                        applyFilters={(obj) => (applyFilters(obj))}
-                        resetFilters={resetFilters}
-                        sortItems={sortItems}
-                    />
-                    {productList}
+                    <p className='SearchDetail__text'>
+                        Your search "<span className='SearchDetail__bold'>
+                            {props.match.params.search}
+                        </span>" returned 0 results.
+                    </p>
                 </section>
             )
         )

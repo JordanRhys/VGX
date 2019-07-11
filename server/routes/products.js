@@ -149,9 +149,7 @@ router.get('/search/:search', (req, res, next) => {
             if (!err) {
                 if (result === undefined || result.length === 0) {
                     console.log('Search is Undefined');
-                    res.json({
-                        "name": "Products not found"
-                    });
+                    res.json([]);
                 } else {
                     res.json(result);
                 }
