@@ -1,17 +1,19 @@
 .NavBar {
 
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 3rem;
+    left: 0;
+    z-index: 5;
+    display: flex;
+
     &__greyout {
-        background-color: rgba(0,0,0,.1);
-        position: fixed;
-        width: 100vw;
-        height: 100vh;
-        top: 3rem;
-        left: 0;
-        z-index: 5;
+        background-color: rgba(0,0,0,.15);
+        flex: 1;
     }
 
     &__container {
-        position: absolute;
         width: 15rem;
         height: 100vh;
         background-color: var(--color-primary);

@@ -14,12 +14,16 @@ const NavBar = (props) => {
 
 
     return(
-        <div className='NavBar__greyout'>
+        <div className='NavBar'>
             <nav className='NavBar__container'>
                 <ul className='NavBar__list'>
                     {links}
                 </ul>
             </nav>
+            <div 
+                className='NavBar__greyout'
+                onClick={props.toggleOpen}
+            ></div>
         </div>
     )
 }
