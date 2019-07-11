@@ -42,9 +42,13 @@ const BasketDetail = () => {
             }
         }).then(function(res) {
             console.log(res)
-            return res.json()
+            if (res !== undefined) {
+                return res.json();
+            }
         }).then(function(res) {
-            setProducts(res)
+            if (res !== undefined) {
+                setProducts(res)
+            }
             _setLoading(false)
         });
     }
