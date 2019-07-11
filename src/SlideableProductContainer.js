@@ -26,6 +26,7 @@ const SlideableProductContainer = (props) => {
         }).then(function(res) {
             return res.json()
         }).then(function(res) {
+            console.log(res);
             setProducts(res)
         });
     }
@@ -33,13 +34,13 @@ const SlideableProductContainer = (props) => {
     const productMap = products.map((product) => {
         return(
             <ProductThumbnail
-                itemID={product.product.itemID}
-                name={product.product.name}
-                category={product.product.category}
-                sell={product.product.sell}
-                buy={product.product.buy}
-                exch={product.product.exch}
-                key={product.product.itemID}
+                itemID={product.itemID}
+                name={product.name}
+                category={product.category}
+                sell={product.sell}
+                buy={product.buy}
+                exch={product.exch}
+                key={product.itemID}
             />
         )
     })

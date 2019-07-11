@@ -10,15 +10,36 @@ var Category = require('../models/category');
 var async = require('async');
 
 router.get('/topproducts', (req, res, next) => {
-    TopProduct.find().populate('product').exec((err, results) => {
-        console.log(results)
-        if (!err) { 
-            res.json(results)
-        } else {
-            console.log(err)
-        }
-    })
-    
+    TopProduct
+        .find({})
+        .populate('product')
+        .exec((err, results) => {
+            let extracted = [];
+            results.map((product) => {
+                extracted.push(product.product)
+            });
+            console.log(extracted);
+            if (!err) { 
+                res.json(extracted);
+            } else {
+                console.log(err);
+            }
+        }) 
+})
+
+router.get('/recent', (req, res, next) => {
+    Product
+        .find({})
+        .limit(10)
+        .sort({release_date: -1})
+        .exec((err, results) => {
+            console.log(results)
+            if (!err) { 
+                res.json(results)
+            } else {
+                console.log(err)
+            }
+        })
 })
 
 router.get('/product/similar/:category/:names', (req, res, next) => {

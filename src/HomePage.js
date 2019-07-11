@@ -12,6 +12,11 @@ const HomePage = () => {
         fetch='/server/topproducts'
       />
 
+      <SlideableProductContainer
+        header='Recent Releases'
+        fetch='/server/recent'
+      />
+
     </div>
   );
 }
