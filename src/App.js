@@ -9,6 +9,7 @@ import HomePage from './HomePage';
 import ProductDetail from './ProductDetail';
 import SearchList from './SearchList';
 import BasketDetail from './BasketDetail';
+import Footer from './Footer';
 
 const BasketContext = createContext();
 
@@ -61,6 +62,7 @@ const App = () => {
           component={BasketDetail}
         />
       </div>
+      <Footer/>
     </BasketContext.Provider>
   );
 }

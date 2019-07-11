@@ -14,8 +14,9 @@
 
   &__container {
     width: 100vw;
-    height: 100vh;
+    min-height: 70vh;
     background-color: #eee;
+    margin-bottom: .5rem;
   }
 
   &__top-padding {
