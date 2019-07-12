@@ -52,6 +52,10 @@
         color: var(--color-primary-dark);
         font-size: var(--font-size-semilarge);
         margin: .2rem 0;
+
+        &--zero {
+            color: var(--color-grey-darker);
+        }
     }
 
     &__stock-box {

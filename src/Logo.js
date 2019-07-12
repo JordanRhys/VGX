@@ -9,6 +9,7 @@ const Logo = (props) => {
           <img
             className='Logo__img'
             src={process.env.PUBLIC_URL + '/VGX.png'}
+            alt='VGX Logo'
           />
       </div>
     </Link>

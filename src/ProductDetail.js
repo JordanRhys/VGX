@@ -63,7 +63,7 @@ const ProductDetail = (props) => {
 
                     <div className='ProductDetail__stock-box'>
                         {(product.stock === 0) ? (
-                            <p className='ProductDetail__stock'>Out of stock</p>
+                            <p className='ProductDetail__stock ProductDetail__stock--zero'>Out of stock</p>
                         ) : (product.stock > 9) ? (
                             <p className='ProductDetail__stock'>10+ Available</p>
                         ) : (
@@ -71,7 +71,11 @@ const ProductDetail = (props) => {
                         )}
                     </div>
 
-                    <AddToBasket itemID={product.itemID} />
+                    {(product.stock === 0) ? (
+                        null
+                    ) : (
+                        <AddToBasket itemID={product.itemID} />
+                    )}
 
                 </div>
             </div> }

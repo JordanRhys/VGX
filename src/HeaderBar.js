@@ -4,7 +4,7 @@ import './HeaderBar.scss';
 import Logo from './Logo';
 import NavIcon from './NavIcon';
 import SearchIcon from './SearchIcon';
-import UserIcon from './UserIcon';
+// import UserIcon from './UserIcon';
 import BasketIcon from './BasketIcon';
 import NavBar from './NavBar';
 import SearchBar from './SearchBar';
@@ -74,7 +74,7 @@ const HeaderBar = (props) => {
         <Logo closeAll={closeAll}/>
 
         <div className='HeaderBar__right'>
-          <UserIcon/>
+          {/* <UserIcon/> */}
           <BasketIcon basketItems={props.basketItems}/>
         </div>
         
