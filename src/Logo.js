@@ -6,7 +6,10 @@ const Logo = (props) => {
   return (
     <Link to="/" onClick={props.closeAll}>
       <div className='Logo__container'>
-          <h1 className='Logo__header'>VGX</h1>
+          <img
+            className='Logo__img'
+            src={process.env.PUBLIC_URL + '/VGX.png'}
+          />
       </div>
     </Link>
   );

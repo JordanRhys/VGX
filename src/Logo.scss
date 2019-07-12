@@ -2,11 +2,12 @@
 
     &__container {
         margin: .5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
-    &__header {
-        color: #4F5D75;
-        margin: 0;
-        font-family: Arial, Helvetica, sans-serif;
+    &__img {
+        width: 4rem;
     }
 }
