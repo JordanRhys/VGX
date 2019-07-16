@@ -17,7 +17,7 @@ const ProductThumbnail = (props) => {
                 <div className='ProductThumbnail__price-container'>
                     <p className='ProductThumbnail__sell'>We Sell: £{toCurrency(props.sell)}</p>
                     <div className='ProductThumbnail__trade-container'>
-                        <p className='ProductThumbnail__trade'>Trade in for:</p>)
+                        <p className='ProductThumbnail__trade'>Trade in for:</p>
                         <p className='ProductThumbnail__trade'>Cash: £{toCurrency(props.buy)}</p>
                         <p className='ProductThumbnail__trade'>Exchange: £{toCurrency(props.exch)}</p>
                     </div>
