@@ -2,6 +2,8 @@ import React, {useState, useRef} from 'react';
 import {withRouter} from 'react-router-dom';
 import './SearchBar.scss';
 
+import SearchDropdown from './SearchDropdown';
+
 const SearchBar = (props) => {
     const [input, setInput] = useState('');
     
@@ -44,10 +46,11 @@ const SearchBar = (props) => {
                         </svg>
                     </button>
                 ) : null}
+                {(input) ? (
+                    <div className='SearchBar__close' onClick={clearInput}>&#10006;</div>
+                ) : null}
             </form>
-            {(input) ? (
-                <div className='SearchBar__close' onClick={clearInput}>&#10006;</div>
-            ) : null}
+            <SearchDropdown search={input} toggleSearch={props.toggleSearch}/>
         </div>
     )
 }

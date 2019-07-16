@@ -1,0 +1,42 @@
+.SearchDropdown {
+    
+    &__list {
+        position: absolute;
+        top: 100%;
+        width: 95%;
+        height: 13.5rem;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        background-color: var(--color-white);
+        border-left: 1px solid var(--color-grey-mid);
+        border-right: 1px solid var(--color-grey-mid);
+        border-bottom: 1px solid var(--color-grey-mid);
+    }
+
+    &__list-item {
+        height: 4.5rem;
+        padding: .3rem .5rem;
+        border-top: 1px solid var(--color-grey-light);
+    }
+
+    &__item-name {
+        width: 100%;
+        height: 1.5rem;
+        color: var(--color-primary-dark);
+        font-size: var(--font-size-small);
+        margin: 0;
+        text-overflow: clip;
+        overflow: hidden;
+    }
+
+    &__prices {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__text {
+        font-size: var(--font-size-smallest);
+        margin: 0;
+    }
+}

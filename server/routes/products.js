@@ -160,6 +160,27 @@ router.get('/category/:name', (req, res, next) => {
     });
 })
 
+router.get('/search/dropdown/:search', (req, res, next) => {
+    const similar = req.params.search;
+    console.log(similar);
+    Product
+        .find({"name": {$regex: similar, $options: 'i'}})
+        .limit(3)
+        .populate('category')
+        .exec((err, result) => {
+            if (!err) {
+                if (result === undefined || result.length === 0) {
+                    console.log('Search is Undefined');
+                    res.json([]);
+                } else {
+                    res.json(result);
+                }
+            } else {
+                console.log(err);
+            }
+        })
+})
+
 router.get('/search/:search', (req, res, next) => {
     const similar = req.params.search;
     console.log(similar);

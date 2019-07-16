@@ -3,19 +3,22 @@
     &__container {
         width: 100%;
         height: 2rem;
-        background-color: var(--color-primary);
         display: flex;
+        flex-direction: column;
         align-items: center;
-        padding: 0 1rem .2rem 1rem;
     }
-
+    
     &__form {
+        padding: 0 1rem .2rem 1rem;
+        background-color: var(--color-primary);
+        width: 100%;
         flex: 1;
+        display: flex;
         position: relative;
     }
 
     &__input {
-        width: 100%;
+        flex: 1;
         height: 1.8rem;
         border-radius: 1.8rem;
         border: none;
@@ -35,7 +38,7 @@
     &__submit {
         position: absolute;
         top: 5%;
-        right: 0;
+        right: 10%;
         border: none;
         background-color: transparent;
     }
