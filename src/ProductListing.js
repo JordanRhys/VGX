@@ -2,6 +2,8 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import './ProductListing.scss';
 
+import { toCurrency } from './helpers';
+
 const ProductListing = (props) => {
     return(
         <div className='ProductListing__container'>
@@ -27,7 +29,7 @@ const ProductListing = (props) => {
                             We Sell for:
                         </p>
                         <p className='ProductListing__price'>
-                            &nbsp;£{props.product.sell}
+                            &nbsp;£{toCurrency(props.product.sell)}
                         </p>
                     </div>
                     <div className='ProductListing__price-container'>
@@ -35,7 +37,7 @@ const ProductListing = (props) => {
                             Trade in for Cash:
                         </p>
                         <p className='ProductListing__price'>
-                            &nbsp;£{props.product.buy}
+                            &nbsp;£{toCurrency(props.product.buy)}
                         </p>
                     </div>
                     <div className='ProductListing__price-container'>
@@ -43,7 +45,7 @@ const ProductListing = (props) => {
                             Trade in for Exchange:
                         </p>
                         <p className='ProductListing__price'>
-                            &nbsp;£{props.product.exch}
+                            &nbsp;£{toCurrency(props.product.exch)}
                         </p>
                     </div>
                 </Link>

@@ -87,7 +87,7 @@ const BasketDetail = () => {
                     </div>
                 </Link>
                 <div>
-                    <p className='BasketDetail__price'>Price: <span className='BasketDetail__price-span'>£{product.sell}</span></p>
+                    <p className='BasketDetail__price'>Price: <span className='BasketDetail__price-span'>£{toCurrency(product.sell)}</span></p>
                     <p
                         className='BasketDetail__remove'
                         onClick={() => removeItem(product.itemID)}

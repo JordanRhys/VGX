@@ -5,6 +5,8 @@ import LoadIcon from './LoadIcon';
 import AddToBasket from './AddToBasket';
 import SimilarItems from './SimilarItems';
 
+import { toCurrency } from './helpers';
+
 const ProductDetail = (props) => {
     const [product, setProduct] = useState('');
     const [_loading, _setLoading] = useState(true);
@@ -50,14 +52,14 @@ const ProductDetail = (props) => {
                     </Link>
                     <div className='ProductDetail__price-container'>
                         <p className='ProductDetail__text'>We Sell for: 
-                        <span className='ProductDetail__price'> £{product.sell}</span></p>
+                        <span className='ProductDetail__price'> £{toCurrency(product.sell)}</span></p>
                         {(product.buy) ? (
                             <p className='ProductDetail__text'>Trade in for Cash: 
-                            <span className='ProductDetail__price'> £{product.buy}</span></p>
+                            <span className='ProductDetail__price'> £{toCurrency(product.buy)}</span></p>
                         ) : null}
                         {(product.exch) ? (
                             <p className='ProductDetail__text'>Trade in for Exchange: 
-                            <span className='ProductDetail__price'> £{product.exch}</span></p>
+                            <span className='ProductDetail__price'> £{toCurrency(product.exch)}</span></p>
                         ) : null}
                     </div>
 
