@@ -9,7 +9,7 @@ const SearchDropdown = (props) => {
 
     useEffect(() => {
         fetchProducts();
-    }, [props.search])
+    }, [props.search]);
 
     const fetchProducts = () => {
         fetch(('/server/search/dropdown/' + props.search), {
@@ -36,10 +36,10 @@ const SearchDropdown = (props) => {
                 className='SearchDropdown__list-item'
             >
                 <p className='SearchDropdown__item-name'>{product.name}</p>
-                <p className='SearchDropdown__text'>We Sell for: {toCurrency(product.sell)}</p>
+                <p className='SearchDropdown__text'>We Sell for: <span>{toCurrency(product.sell)}</span></p>
                 <div className='SearchDropdown__prices'>
-                    <p className='SearchDropdown__text'>Trade in for Cash: {toCurrency(product.buy)}</p>
-                    <p className='SearchDropdown__text'>Trade in for Exchange: {toCurrency(product.exch)}</p>
+                    <p className='SearchDropdown__text'>Trade in for Cash: <span>{toCurrency(product.buy)}</span></p>
+                    <p className='SearchDropdown__text'>Trade in for Exchange: <span>{toCurrency(product.exch)}</span></p>
                 </div>
             </li>
         </Link>

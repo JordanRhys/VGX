@@ -4,10 +4,12 @@
         color: var(--color-grey-dark);
         font-size: var(--font-size--small);
         margin: -.2rem 0 0 0;
+        cursor: pointer;
     }
 
     &__container {
         width: 100vw;
+        color: var(--color-black);
     }
     
     &__detail-container {
@@ -24,8 +26,8 @@
     }
 
     &__image {
-        max-width: 18rem;
-        max-height: 18rem;
+        width: 18rem;
+        height: 18rem;
         object-fit: contain;
         margin: 1rem;
     }

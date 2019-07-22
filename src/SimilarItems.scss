@@ -7,9 +7,9 @@
     flex-direction: column;
 
     &__header {
-        font-size: var(--font-size-reg);
+        font-size: var(--font-size-small);
         font-weight: 600;
-        color: var(--color-primary-dark);
+        color: var(--color-grey-dark);
         border-bottom: .1rem solid var(--color-grey-light);
         margin: 0;
         padding-bottom: .1rem;

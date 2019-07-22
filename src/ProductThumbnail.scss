@@ -8,28 +8,23 @@
         text-align: center;
         margin: 0;
         font-size: var(--font-size-smaller);
-
-        &:not(:last-child) {
-            border-right: .1rem solid var(--color-grey-light);
-        }
+        color: var(--color-black);
+        cursor: pointer;
     }
-
+    
     &__image {
         width: 7rem;
         height: 7rem;
         object-fit: contain;
     }
-
+    
     &__name {
         width: 9rem;
         margin: .2rem 0;
+        font-weight: 600;
     }
 
     &__sell, &__trade {
         margin: 0;
-    }
-
-    &__trade-container {
-        margin-top: .2rem;
     }
 }

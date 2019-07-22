@@ -2,6 +2,7 @@
 
     &__container {
         position: relative;
+        cursor: pointer;
     }
 
     &__svg {
@@ -23,6 +24,7 @@
         color: var(--color-white);
         font-size: var(--font-size-smallest);
         font-weight: 600;
+        line-height: .8rem;
         display: flex;
         align-items: center;
         justify-content: center;

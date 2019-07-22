@@ -10,6 +10,7 @@ import ProductDetail from './ProductDetail';
 import SearchList from './SearchList';
 import BasketDetail from './BasketDetail';
 import Footer from './Footer';
+import ScrollToTop from './ScrollToTop';
 
 const BasketContext = createContext();
 
@@ -35,7 +36,7 @@ const App = () => {
     <BasketContext.Provider value={updateBasketItems}>
       <div className='App__container'>
         <HeaderBar basketItems={basketItems}/>
-        <div className="App__top-padding"/>
+        <span className="App__top-padding"/>
         <Route
           exact
           path='/'
@@ -44,7 +45,9 @@ const App = () => {
 
         <Route
           path='/product/:itemID'
-          component={ProductDetail}
+          render={(props) => (<ScrollToTop>
+              <ProductDetail {...props}/>
+            </ScrollToTop>)}
         />
 
         <Route

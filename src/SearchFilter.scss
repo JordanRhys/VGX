@@ -16,10 +16,12 @@
     &__filter {
         width: 50%;
         border-right: 1px solid var(--color-grey-midlight);
+        cursor: pointer;
     }
 
     &__sort {
         width: 50%;
+        cursor: pointer;
     }
 
     &__header {
@@ -83,6 +85,7 @@
         height: 1.5rem;
         padding: .2rem .8rem;
         font-size: var(--font-size-smaller);
+        cursor: pointer;
 
         &:nth-child(odd) {
             border-right: 1px solid var(--color-grey-midlight);
@@ -102,8 +105,12 @@
     }
 
     &__label {
-        padding-right: 1.8rem;
-        margin-right: -1.8rem;
+        padding-right: 2.5rem;
+        margin-right: -2.5rem;
+        display: block;
+        cursor: pointer;
+        position: relative;
+        z-index: 2;
     }
 
     &__button-row {

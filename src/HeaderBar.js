@@ -4,7 +4,6 @@ import './HeaderBar.scss';
 import Logo from './Logo';
 import NavIcon from './NavIcon';
 import SearchIcon from './SearchIcon';
-// import UserIcon from './UserIcon';
 import BasketIcon from './BasketIcon';
 import NavBar from './NavBar';
 import SearchBar from './SearchBar';
@@ -13,7 +12,6 @@ const HeaderBar = (props) => {
   const [categories, setCategories] = useState([]);
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
-  // const [redirect, setRedirect] = useState('');
 
   useEffect(() => {
     if (categories.length === 0) {
@@ -63,7 +61,7 @@ const HeaderBar = (props) => {
   }
 
   return (
-    <div className='HeaderBar__container Universal__box-shadow'>
+    <nav className='HeaderBar__container Universal__box-shadow'>
       <div className='HeaderBar__bar'>
 
         <div className='HeaderBar__left'>
@@ -85,7 +83,7 @@ const HeaderBar = (props) => {
       {(searchOpen) ? (
         <SearchBar toggleSearch={toggleSearch}/>
       ) : null}
-    </div>
+    </nav>
   );
 }
 

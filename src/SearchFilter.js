@@ -149,8 +149,8 @@ const SearchFilter = (props) => {
 
                     <p className='SearchFilter__header'>More Filters:</p>
                     <div className='SearchFilter__checkbox-row'>
-                        <label className='SearchFilter__label' htmlFor='stockCheck'>In stock only:</label>
                         <input id='stockCheck' type='checkbox' value={stockCheck} onChange={toggleStockCheck}/>
+                        <label className='SearchFilter__label' htmlFor='stockCheck'>In stock only:</label>
                         {(stockCheck) ? (
                             <span className='Universal__checkbox'>
                                 <span className='Universal__checkbox-check'>&#x2714;</span>

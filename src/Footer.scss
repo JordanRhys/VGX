@@ -2,13 +2,23 @@
 
     &__container {
         width: 100%;
-        background-color: var(--color-grey-dark);
-        padding: 1rem;
+        background-color: var(--color-grey-darker);
+        padding: 2rem 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
     }
 
     &__text {
         font-size: var(--font-size-smaller);
+        font-weight: 600;
         color: var(--color-white);
         text-align: center;
+        margin: .5rem;
+    }
+
+    &__img {
+        width: 5rem;
     }
 }

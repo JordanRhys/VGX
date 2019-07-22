@@ -1,13 +1,15 @@
 .AddToBasket {
 
     &__button {
-        width: 12rem;
+        width: 13rem;
         height: 2.5rem;
+        border-radius: .2rem;
         border: none;
         outline: none;
         color: var(--color-white);
         font-size: var(--font-size-small);
         font-weight: 600;
+        cursor: pointer;
         
         &--active {
             background-color: var(--color-primary);
