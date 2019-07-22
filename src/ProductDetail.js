@@ -52,18 +52,23 @@ const ProductDetail = (props) => {
                     </Link>
                     <div className='ProductDetail__price-container'>
                         <p className='ProductDetail__text'>We Sell for: 
-                        <span className='ProductDetail__price'> £{toCurrency(product.sell)}</span></p>
+                        <span className='ProductDetail__price'> {toCurrency(product.sell)}</span></p>
                         {(product.buy) ? (
                             <p className='ProductDetail__text'>Trade in for Cash: 
-                            <span className='ProductDetail__price'> £{toCurrency(product.buy)}</span></p>
+                            <span className='ProductDetail__price'> {toCurrency(product.buy)}</span></p>
                         ) : null}
                         {(product.exch) ? (
                             <p className='ProductDetail__text'>Trade in for Exchange: 
-                            <span className='ProductDetail__price'> £{toCurrency(product.exch)}</span></p>
+                            <span className='ProductDetail__price'> {toCurrency(product.exch)}</span></p>
                         ) : null}
                     </div>
 
                     <div className='ProductDetail__stock-box'>
+                        {(product.stock === 0) ? (
+                            null
+                        ) : (
+                            <AddToBasket itemID={product.itemID} />
+                        )}
                         {(product.stock === 0) ? (
                             <p className='ProductDetail__stock ProductDetail__stock--zero'>Out of stock</p>
                         ) : (product.stock > 9) ? (
@@ -73,11 +78,6 @@ const ProductDetail = (props) => {
                         )}
                     </div>
 
-                    {(product.stock === 0) ? (
-                        null
-                    ) : (
-                        <AddToBasket itemID={product.itemID} />
-                    )}
 
                 </div>
             </div> }

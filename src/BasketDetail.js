@@ -87,7 +87,7 @@ const BasketDetail = () => {
                     </div>
                 </Link>
                 <div>
-                    <p className='BasketDetail__price'>Price: <span className='BasketDetail__price-span'>£{toCurrency(product.sell)}</span></p>
+                    <p className='BasketDetail__price'>Price: <span className='BasketDetail__price-span'>{toCurrency(product.sell)}</span></p>
                     <p
                         className='BasketDetail__remove'
                         onClick={() => removeItem(product.itemID)}
@@ -132,17 +132,17 @@ const BasketDetail = () => {
                 <div className='BasketDetail__container'>
                     <div className='BasketDetail__row'>
                         <p className='BasketDetail__text'>Price:</p>
-                        <p className='BasketDetail__value'>£{priceString}</p>
+                        <p className='BasketDetail__value'>{priceString}</p>
                     </div>
                     <div className='BasketDetail__row'>
                         <p className='BasketDetail__text'>Delivery:</p>
                         <p className='BasketDetail__value'>
-                            {(delivery === 0) ? 'Free' : '£' + deliveryString}
+                            {(delivery === 0) ? 'Free' : deliveryString}
                         </p>
                     </div>
                     <div className='BasketDetail__row'>
                         <p className='BasketDetail__text'>Grand Total:</p>
-                        <p className='BasketDetail__value'>£{totalString}</p>
+                        <p className='BasketDetail__value'>{totalString}</p>
                         <button className='BasketDetail__checkout'>Checkout</button>
                     </div>
                 </div>

@@ -15,14 +15,14 @@
     &__dot {
         position: absolute;
         top: 0;
-        right: 10%;
+        right: 8%;
         width: 1rem;
         height: 1rem;
         border-radius: 50%;
         background-color: red;
         color: var(--color-white);
-        font-size: var(--font-size-smaller);
-        padding: .1rem;
+        font-size: var(--font-size-smallest);
+        font-weight: 600;
         display: flex;
         align-items: center;
         justify-content: center;

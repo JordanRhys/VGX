@@ -36,10 +36,10 @@ const SearchDropdown = (props) => {
                 className='SearchDropdown__list-item'
             >
                 <p className='SearchDropdown__item-name'>{product.name}</p>
-                <p className='SearchDropdown__text'>We Sell for: £{toCurrency(product.sell)}</p>
+                <p className='SearchDropdown__text'>We Sell for: {toCurrency(product.sell)}</p>
                 <div className='SearchDropdown__prices'>
-                    <p className='SearchDropdown__text'>Trade in for Cash: £{toCurrency(product.buy)}</p>
-                    <p className='SearchDropdown__text'>Trade in for Exchange: £{toCurrency(product.exch)}</p>
+                    <p className='SearchDropdown__text'>Trade in for Cash: {toCurrency(product.buy)}</p>
+                    <p className='SearchDropdown__text'>Trade in for Exchange: {toCurrency(product.exch)}</p>
                 </div>
             </li>
         </Link>

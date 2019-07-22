@@ -5,7 +5,7 @@ const toCurrency = (value) => {
     console.log(start);
     let end = str.substr(-2);
     console.log(end);
-    return start + '.' + end;
+    return '£' + start + '.' + end;
 }
 
 export { toCurrency };
