@@ -25,6 +25,9 @@ const SimilarItems = (props) => {
                 console.log(res.status);
             }
         }).then(function(res) {
+            if (res === undefined) {
+                return [];
+            }
             return res.json()
         }).then(function(res) {
             setProducts(res)
@@ -47,7 +50,7 @@ const SimilarItems = (props) => {
         }
     });
 
-    if (products) {
+    if (products.length > 0) {
         return (
             <div className='SimilarItems'>
                 <h2 className='SimilarItems__header'>You may also like...</h2>

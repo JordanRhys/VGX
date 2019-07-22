@@ -114,7 +114,7 @@ const SearchFilter = (props) => {
                 className='SearchFilter__sort'
                 onClick={toggleSort}
             >
-                Sorting
+                Sort
             </div>
 
             {/* FILTER OPEN */}

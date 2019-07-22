@@ -67,9 +67,7 @@ router.get('/product/similar/:category/:names', (req, res, next) => {
         if (!err) {
             if (results === undefined) {
                 console.log(results);
-                res.json({
-                    "name": "Item not found"
-                })
+                res.json([]);
             } else {
                 let joined = results.byName.concat(results.byCat);
                 let ids = [];
