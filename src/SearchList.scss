@@ -1,10 +1,26 @@
+@import 'MediaQuery';
+
 .SearchDetail {
 
     &__container {
         width: 100%;
-        background-color: var(--color-white);
         display: flex;
         flex-direction: column;
+        
+        @include respond(tabland) {
+            align-items: flex-start;
+            flex-direction: row-reverse;
+        }
+    }
+    
+    &__items {
+        background-color: var(--color-white);
+
+        @include respond(tabland) {
+            flex: 1;
+            margin: .5rem;
+            box-shadow: 3px 4px 0 0 rgb(230,230,230);
+        }
     }
 
     &__text {

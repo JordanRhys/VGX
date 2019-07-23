@@ -1,15 +1,18 @@
 import React, {useState, useEffect} from 'react';
+import Media from 'react-media';
 import './SearchList.scss';
 
 import ProductListing from './ProductListing';
 import LoadIcon from './LoadIcon';
 import SearchFilter from './SearchFilter';
+import SearchFilterDesktop from './SearchFilterDesktop';
 
 const SearchList = (props) => {
     const [products, setProducts] = useState([]);
     const [_loading, _setLoading] = useState(true);
     const [categoryList, setCategoryList] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
+    const [sortBy, setSortBy] = useState();
 
     useEffect(() => {
         fetchProducts()
@@ -130,6 +133,7 @@ const SearchList = (props) => {
     }
 
     const sortItems = (sort) => {
+        setSortBy(sort);
         return new Promise((resolve, reject) => {
             var items;
             var filtered;
@@ -227,28 +231,58 @@ const SearchList = (props) => {
     } else if (filteredProducts.length === 0) {
         return(
             <section className='SearchDetail__container'>
-                <SearchFilter
-                    products={products}
-                    categoryList={categoryList}
-                    applyFilters={(obj) => (applyFilters(obj))}
-                    resetFilters={resetFilters}
-                    sortItems={(sortOrder) => (sortItems(sortOrder))}
-                />
-                {productList}
+                <Media query="(min-width: 56.25em)">
+                    {matches => matches ? (
+                        <SearchFilterDesktop
+                            products={products}
+                            categoryList={categoryList}
+                            applyFilters={(obj) => (applyFilters(obj))}
+                            resetFilters={resetFilters}
+                            sortItems={(sortOrder) => (sortItems(sortOrder))}
+                            sortBy={sortBy}
+                        />
+                    ) : (
+                        <SearchFilter
+                            products={products}
+                            categoryList={categoryList}
+                            applyFilters={(obj) => (applyFilters(obj))}
+                            resetFilters={resetFilters}
+                            sortItems={(sortOrder) => (sortItems(sortOrder))}
+                        />
+                    )}
+                </Media>
+                <div className='SearchDetail__items'>
+                    {productList}
+                </div>
             </section>
         )
         
     } else {
         return(
             <section className='SearchDetail__container'>
-                <SearchFilter
-                    products={products}
-                    categoryList={categoryList}
-                    applyFilters={(obj) => (applyFilters(obj))}
-                    resetFilters={resetFilters}
-                    sortItems={(sortOrder) => (sortItems(sortOrder))}
-                />
-                {filteredProductList}
+                <Media query="(min-width: 56.25em)">
+                    {matches => matches ? (
+                        <SearchFilterDesktop
+                            products={products}
+                            categoryList={categoryList}
+                            applyFilters={(obj) => (applyFilters(obj))}
+                            resetFilters={resetFilters}
+                            sortItems={(sortOrder) => (sortItems(sortOrder))}
+                            sortBy={sortBy}
+                        />
+                    ) : (
+                        <SearchFilter
+                            products={products}
+                            categoryList={categoryList}
+                            applyFilters={(obj) => (applyFilters(obj))}
+                            resetFilters={resetFilters}
+                            sortItems={(sortOrder) => (sortItems(sortOrder))}
+                        />
+                    )}
+                </Media>
+                <div className='SearchDetail__items'>
+                    {filteredProductList}
+                </div>
             </section>
         )
     }

@@ -27,14 +27,17 @@
         height: 2.5rem;
         background-color: var(--color-primary);
         border: none;
+        border-radius: .2rem;
         border-bottom: .1rem solid var(--color-primary-dark);
         color: var(--color-white);
-        font-size: var(--font-size-reg);
+        font-size: var(--font-size-small);
         font-weight: 600;
 
         &--cancel {
-            background-color: red;
-            border-bottom: .1rem solid darkred;
+            color: red;
+            border-bottom: 0;
+            background-color: transparent;
+            font-size: var(--font-size-small);
         }
 
         &--disabled {
