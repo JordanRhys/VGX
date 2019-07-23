@@ -1,3 +1,5 @@
+@import 'MediaQuery';
+
 .ProductListing {
 
     &__container {
@@ -5,6 +7,10 @@
         font-size: var(--font-size-small);
         border-bottom: .1rem solid var(--color-grey-light);
         cursor: pointer;
+
+        @include respond(tabport) {
+            padding: 0 1rem;
+        }
     }
 
     &__detail-container {
@@ -19,6 +25,11 @@
         width: 8rem;
         height: 8rem;
         text-align: center;
+
+        @include respond(tabport) {
+            width: 9rem;
+            height: 9rem;
+        }
     }
 
     &__image {
@@ -26,6 +37,11 @@
         max-width: 7rem;
         max-height: 7rem;
         object-fit: contain;
+
+        @include respond(tabport) {
+            max-width: 8rem;
+            max-height: 8rem;
+        }
     }
 
     &__header {

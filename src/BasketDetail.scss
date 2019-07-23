@@ -105,4 +105,8 @@
         fill: var(--color-grey-midlight);
         padding-top: 5rem;
     }
+
+    &__text {
+        font-size: var(--font-size-small);
+    }
 }

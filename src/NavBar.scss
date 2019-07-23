@@ -7,6 +7,7 @@
     left: 0;
     z-index: 5;
     display: flex;
+    font-size: var(--font-size-small);
 
     &__greyout {
         background-color: rgba(0,0,0,.15);

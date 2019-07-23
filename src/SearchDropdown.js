@@ -36,8 +36,8 @@ const SearchDropdown = (props) => {
                 className='SearchDropdown__list-item'
             >
                 <p className='SearchDropdown__item-name'>{product.name}</p>
-                <p className='SearchDropdown__text'>We Sell for: <span>{toCurrency(product.sell)}</span></p>
                 <div className='SearchDropdown__prices'>
+                    <p className='SearchDropdown__text'>We Sell for: <span>{toCurrency(product.sell)}</span></p>
                     <p className='SearchDropdown__text'>Trade in for Cash: <span>{toCurrency(product.buy)}</span></p>
                     <p className='SearchDropdown__text'>Trade in for Exchange: <span>{toCurrency(product.exch)}</span></p>
                 </div>

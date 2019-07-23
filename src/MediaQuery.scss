@@ -1,0 +1,22 @@
+@mixin respond($breakpoint) {
+
+    //Desktop = 1200px+
+    @if $breakpoint == desktop {
+      @media (min-width: 75em) { @content };
+    }
+  
+    //Tablet Landscape = 900px-1200px
+    @if $breakpoint == tabland {
+      @media (min-width: 56.25em) { @content };
+    }
+  
+    //Tablet Portrait = 600px-900px
+    @if $breakpoint == tabport {
+      @media (min-width: 37.5em) { @content };
+    }
+  
+    //Phone or smaller
+    @if $breakpoint == phone {
+      @media (max-width: 37.5em) { @content };
+    }
+}
