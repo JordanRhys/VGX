@@ -15,6 +15,15 @@ const ProductDetail = (props) => {
         loadProduct(props.match.params.itemID)
     }, [props.match.params.itemID])
 
+    useEffect(() => {
+        if (product) {
+            document.title = product.name + ' - VGX';
+        }
+        return () => {
+            document.title = 'VGX - Video Game eXchange';
+        }
+    }, [product]);
+
     const loadProduct = (itemID) => {
         fetch('/server/product/' + itemID, {
             headers: {
