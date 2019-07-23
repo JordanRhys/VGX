@@ -1,3 +1,5 @@
+@import 'MediaQuery';
+
 .ProductDetail {
 
     &__category {
@@ -18,11 +20,26 @@
         background-color: var(--color-white);
         font-size: var(--font-size-small);
         padding: .5rem;
+
+        @include respond(tabland) {
+            flex-direction: row;
+            align-items: flex-start;
+        }
     }
 
     &__details {
         width: 100%;
         border-top: 1px solid var(--color-grey-light);
+        display: flex;
+        flex-direction: column;
+
+        @include respond(tabland) {
+            border-top: 0;
+            border-left: 1px solid var(--color-grey-light);
+            padding: 2rem 1rem;
+            height: 18rem;
+            margin: 1rem 0;
+        }
     }
 
     &__image {
@@ -30,6 +47,10 @@
         height: 18rem;
         object-fit: contain;
         margin: 1rem;
+
+        @include respond(tabland) {
+            margin: 1rem 2rem;
+        }
     }
 
     &__name {
@@ -47,15 +68,21 @@
         font-size: var(--font-size-semilarge);
         margin: 0 0 0 .5rem;
 
+        
         &--zero {
             color: var(--color-grey-darker);
             margin: 0;
         }
     }
-
+    
     &__stock-box {
         display: flex;
         align-items: center;
+
+        @include respond(tabland) {
+            justify-self: flex-end;
+            flex: 1;
+        }
     }
 
     &__text {
