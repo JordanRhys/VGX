@@ -10,7 +10,10 @@ const ProductThumbnail = (props) => {
             <div className='ProductThumbnail__container'>
                 <img 
                     className='ProductThumbnail__image'
-                    src={process.env.PUBLIC_URL + '/products/'+ props.itemID + '-thumb.jpg'}
+                    srcSet={`
+                        ${process.env.PUBLIC_URL}/products/${props.itemID}-thumb.jpg 1x,
+                        ${process.env.PUBLIC_URL}/products/${props.itemID}-thumb-2x.jpg 2x
+                    `}
                     alt={props.name + ' Image'}
                 />
                 <p className='ProductThumbnail__name'>{props.name}</p>

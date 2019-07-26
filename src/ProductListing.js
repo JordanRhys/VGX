@@ -11,7 +11,10 @@ const ProductListing = (props) => {
                 <Link to={'/product/' + props.product.itemID}>
                     <img 
                         className='ProductListing__image'
-                        src={process.env.PUBLIC_URL + '/products/'+ props.product.itemID + '-thumb.jpg'}
+                        srcSet={`
+                            ${process.env.PUBLIC_URL}/products/${props.product.itemID}-thumb.jpg 1x,
+                            ${process.env.PUBLIC_URL}/products/${props.product.itemID}-thumb-2x.jpg 2x
+                        `}
                         alt={props.product.name + ' Image'}
                     />
                 </Link>
