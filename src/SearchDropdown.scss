@@ -6,7 +6,6 @@
         position: absolute;
         top: 100%;
         width: 95%;
-        max-height: 13.5rem;
         list-style: none;
         padding: 0;
         margin: 0;
@@ -14,23 +13,36 @@
         border-left: 1px solid var(--color-grey-mid);
         border-right: 1px solid var(--color-grey-mid);
         border-bottom: 1px solid var(--color-grey-mid);
+
+        @include respond(tabland) {
+            width: 28rem;
+        }
     }
 
     &__list-item {
         padding: .2rem .5rem;
         border-top: 1px solid var(--color-grey-light);
         cursor: pointer;
+        transition: .2s;
+
+        &:hover {
+            background-color: var(--color-grey-light);
+        }
     }
 
     &__item-name {
         width: 100%;
-        height: 1.5rem;
         color: var(--color-primary-dark);
         font-size: var(--font-size-small);
         font-weight: 600;
         margin: 0;
         text-overflow: clip;
-        overflow: hidden;
+    }
+
+    &__cat {
+        font-size: var(--font-size-smaller);
+        color: var(--color-grey-dark);
+        font-weight: 400;
     }
 
     &__prices {

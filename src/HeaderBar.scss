@@ -1,3 +1,5 @@
+@import 'MediaQuery';
+
 .HeaderBar {
 
     &__container {
@@ -5,17 +7,21 @@
         position: fixed;
         z-index: 15;
     }
-
+    
     &__bar {
         height: 3rem;
         display: flex;
         align-items: center;
         justify-content: space-between;
         background-color: var(--color-primary-light);
+
+        @include respond(tabland) {
+            padding: 0 .5rem;
+        }
     }
 
     &__left, &__right {
-        width: 6rem;
+        flex: 1;
         display: flex;
         align-items: center;
     }

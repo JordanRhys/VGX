@@ -17,13 +17,14 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        background-color: var(--color-white);
         font-size: var(--font-size-small);
-        padding: .5rem;
+        background-color: var(--color-white);
 
         @include respond(tabland) {
+            margin: .5rem;
             flex-direction: row;
             align-items: flex-start;
+            box-shadow: var(--shadow-solid);
         }
     }
 
@@ -35,21 +36,22 @@
 
         @include respond(tabland) {
             border-top: 0;
-            border-left: 1px solid var(--color-grey-light);
-            padding: 2rem 1rem;
+            padding: .5rem .5rem;
             height: 18rem;
-            margin: 1rem 0;
+            margin: .5rem .5rem;
+            height: 19rem;
+            justify-content: center;
         }
     }
 
     &__image {
-        width: 18rem;
-        height: 18rem;
+        width: 19rem;
+        height: 19rem;
         object-fit: contain;
         margin: 1rem;
 
         @include respond(tabland) {
-            margin: 1rem 2rem;
+            margin: .5rem .5rem;
         }
     }
 
@@ -78,11 +80,6 @@
     &__stock-box {
         display: flex;
         align-items: center;
-
-        @include respond(tabland) {
-            justify-self: flex-end;
-            flex: 1;
-        }
     }
 
     &__text {

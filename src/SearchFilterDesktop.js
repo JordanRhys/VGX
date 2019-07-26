@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './SearchFilterDesktop.scss';
 
 const SearchFilterDesktop = (props) => {
@@ -7,6 +7,10 @@ const SearchFilterDesktop = (props) => {
     const [sort, setSort] = useState(props.sortBy);
     const [stockCheck, setStockCheck] = useState(false);
     const [selectedCategories, setSelectedCategories] = useState([]);
+
+    useEffect(() => {
+        setSort('');
+    }, [props.products])
 
     const changeMin = (e) => {
         setMin(e.target.value);
@@ -91,6 +95,7 @@ const SearchFilterDesktop = (props) => {
             <div className='SearchFilterDesktop__sub-container'>
                 <p className='SearchFilterDesktop__header'>Sort:</p>
                 <select className='SearchFilterDesktop__dropdown' onChange={changeSort} value={sort}>
+                    <option value="">Sort By</option>
                     <option value="nameAsc">Name: Ascending</option>
                     <option value="nameDes">Name: Descending</option>
                     <option value="priceAsc">Price: Low to High</option>

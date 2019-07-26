@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import Media from 'react-media';
 import './HeaderBar.scss';
 
 import Logo from './Logo';
@@ -7,6 +8,7 @@ import SearchIcon from './SearchIcon';
 import BasketIcon from './BasketIcon';
 import NavBar from './NavBar';
 import SearchBar from './SearchBar';
+import SearchBarDesktop from './SearchBarDesktop';
 
 const HeaderBar = (props) => {
   const [categories, setCategories] = useState([]);
@@ -66,7 +68,13 @@ const HeaderBar = (props) => {
 
         <div className='HeaderBar__left'>
           <NavIcon menuOpen={menuOpen} toggleMenu={toggleMenu}/>
-          <SearchIcon searchOpen={searchOpen} toggleSearch={toggleSearch}/>
+          <Media query="(min-width: 56.25em)">
+            {matches => matches ? (
+              <SearchBarDesktop toggleSearch={toggleSearch} menuOpen={menuOpen}/>
+            ) : (
+              <SearchIcon searchOpen={searchOpen} toggleSearch={toggleSearch}/>
+            )}
+          </Media>
         </div>
 
         <Logo closeAll={closeAll}/>

@@ -1,11 +1,16 @@
 @import 'MediaQuery';
 
 .SlideableProductContainer {
-    background-color: #fff;
+    background-color: var(--color-white);
     padding: .2rem .5rem;
     margin-top: .5rem;
     display: flex;
     flex-direction: column;
+
+    @include respond(tabland) {
+        margin: .5rem;
+        box-shadow: var(--shadow-solid);
+    }
 
     &__header {
         font-size: var(--font-size-small);

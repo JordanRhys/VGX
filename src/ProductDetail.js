@@ -44,14 +44,14 @@ const ProductDetail = (props) => {
     }
 
     return(
-        <main className='ProductDetail__container Universal__box-shadow'>
+        <main className='ProductDetail__container'>
             {(_loading) ? 
             <LoadIcon/> :
             
             <div className='ProductDetail__detail-container'>
                 <img
                     className='ProductDetail__image'
-                    src={process.env.PUBLIC_URL + '/products/' + product.itemID + '.png'}
+                    src={process.env.PUBLIC_URL + '/products/' + product.itemID + '.jpg'}
                     alt={product.name + ' Image'}
                 />
                 <div className='ProductDetail__details'>

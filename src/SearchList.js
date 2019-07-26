@@ -12,10 +12,11 @@ const SearchList = (props) => {
     const [_loading, _setLoading] = useState(true);
     const [categoryList, setCategoryList] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
+    const [filtered, setFiltered] = useState(false);
     const [sortBy, setSortBy] = useState();
 
     useEffect(() => {
-        fetchProducts()
+        fetchProducts();
     }, [props.match.params.search])
 
     // Grab used Categories from products
@@ -80,12 +81,14 @@ const SearchList = (props) => {
                 } else {
                     setFilteredProducts([]);
                 }
+                setFiltered(true);
             })
             .catch((error) => console.log(error));
     }
 
     const filterCategories = (obj) => {
         return new Promise((resolve, reject) => {
+            console.log(obj);
             if (obj.categories.length > 0) {
                 const filtered = products.filter((product) => (
                     obj.categories.indexOf(product.category.name) !== -1
@@ -109,19 +112,29 @@ const SearchList = (props) => {
 
     const filterStocked = (obj) => {
         console.log(obj);
-        const filtered = obj.products.filter((product) => (
-            product.stock > 0
-        )) || [];
-        console.log(filtered);
-        const object = {
-            products: filtered,
-            min: obj.min,
-            max: obj.max
-        };
-        return object;
+        if (obj.stocked) {
+            const filtered = obj.products.filter((product) => (
+                product.stock > 0
+            )) || [];
+            
+            const object = {
+                products: filtered,
+                min: obj.min,
+                max: obj.max
+            };
+            return object;
+        } else {
+            const object = {
+                products: obj.products,
+                min: obj.min,
+                max: obj.max
+            };
+            return object;
+        }
     }
 
     const filterPrice = (obj) => {
+        console.log(obj);
         const filtered = obj.products.filter((product) => (
             product.sell >= obj.min && product.sell <= obj.max
         )) || [];
@@ -129,6 +142,7 @@ const SearchList = (props) => {
     }
 
     const resetFilters = () => {
+        setFiltered(false);
         setFilteredProducts([]);
     }
 
@@ -228,7 +242,7 @@ const SearchList = (props) => {
             </section>
         )
 
-    } else if (filteredProducts.length === 0) {
+    } else if (!filtered) {
         return(
             <section className='SearchDetail__container'>
                 <Media query="(min-width: 56.25em)">
@@ -257,6 +271,34 @@ const SearchList = (props) => {
             </section>
         )
         
+    } else if (filteredProducts.length === 0) {
+        return(
+            <section className='SearchDetail__container'>
+                <Media query="(min-width: 56.25em)">
+                    {matches => matches ? (
+                        <SearchFilterDesktop
+                            products={products}
+                            categoryList={categoryList}
+                            applyFilters={(obj) => (applyFilters(obj))}
+                            resetFilters={resetFilters}
+                            sortItems={(sortOrder) => (sortItems(sortOrder))}
+                            sortBy={sortBy}
+                        />
+                    ) : (
+                        <SearchFilter
+                            products={products}
+                            categoryList={categoryList}
+                            applyFilters={(obj) => (applyFilters(obj))}
+                            resetFilters={resetFilters}
+                            sortItems={(sortOrder) => (sortItems(sortOrder))}
+                        />
+                    )}
+                </Media>
+                <div className='SearchDetail__items'>
+                    <p className='SearchDetail__text'>Your filter returned no results. Try a different filter.</p>
+                </div>
+            </section>
+        )
     } else {
         return(
             <section className='SearchDetail__container'>
