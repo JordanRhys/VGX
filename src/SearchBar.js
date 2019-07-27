@@ -33,6 +33,7 @@ const SearchBar = (props) => {
         <div className='SearchBar__container'>
             <form className='SearchBar__form' onSubmit={validateSubmit}>
                 <input
+                    id='SearchBar'
                     className='SearchBar__input'
                     autoFocus
                     ref={searchInput}

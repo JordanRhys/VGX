@@ -1,0 +1,32 @@
+@import 'MediaQuery';
+
+.NotFound {
+
+    &__missing-container {
+        width: 100%;
+        padding: 1rem;
+        font-size: var(--font-size-small);
+        background-color: var(--color-white);
+        text-align: center;
+
+        @include respond(tabland) {
+            margin: .5rem;
+            box-shadow: var(--shadow-solid);
+        }
+    }
+
+    &__missing-header {
+        width: 100%;
+        margin: 0;
+        color: var(--color-grey-dark);
+    }
+
+    &__missing-text {
+        display: inline-block;
+        cursor: pointer;
+
+        &:not(:last-child) {
+            margin-right: .4rem;
+        }
+    }
+}

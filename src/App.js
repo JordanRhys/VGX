@@ -1,5 +1,5 @@
 import React, { useState, useEffect, createContext } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import './App.scss';
 import './Universal.scss';
 import './Variables.scss';
@@ -11,6 +11,7 @@ import SearchList from './SearchList';
 import BasketDetail from './BasketDetail';
 import Footer from './Footer';
 import ScrollToTop from './ScrollToTop';
+import NotFound from './NotFound';
 
 const BasketContext = createContext();
 
@@ -37,6 +38,7 @@ const App = () => {
       <div className='App__container'>
         <HeaderBar basketItems={basketItems}/>
         <span className="App__top-padding"/>
+        <Switch>
         <Route
           exact
           path='/'
@@ -64,6 +66,12 @@ const App = () => {
           path='/basket'
           component={BasketDetail}
         />
+
+        <Route
+          path='*'
+          component={NotFound}
+        />
+        </Switch>
       </div>
       <Footer/>
     </BasketContext.Provider>

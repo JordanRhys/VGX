@@ -4,15 +4,19 @@ import './ProductDetail.scss';
 import LoadIcon from './LoadIcon';
 import AddToBasket from './AddToBasket';
 import SimilarItems from './SimilarItems';
+import NotFound from './NotFound';
 
 import { toCurrency } from './helpers';
 
 const ProductDetail = (props) => {
     const [product, setProduct] = useState('');
     const [_loading, _setLoading] = useState(true);
+    const [notFound, setNotFound] = useState(false);
 
     useEffect(() => {
-        loadProduct(props.match.params.itemID)
+        _setLoading(true);
+        setNotFound(false);
+        loadProduct(props.match.params.itemID);
     }, [props.match.params.itemID])
 
     useEffect(() => {
@@ -38,8 +42,12 @@ const ProductDetail = (props) => {
         }).then(function(res) {
             return res.json()
         }).then(function(res) {
-            setProduct(res)
-            _setLoading(false)
+            if (res === null) {
+                setNotFound(true);
+            } else {
+                setProduct(res);
+            }
+            _setLoading(false);
         });
     }
 
@@ -48,50 +56,52 @@ const ProductDetail = (props) => {
             {(_loading) ? 
             <LoadIcon/> :
             
-            <div className='ProductDetail__detail-container'>
-                <img
-                    className='ProductDetail__image'
-                    src={process.env.PUBLIC_URL + '/products/' + product.itemID + '.jpg'}
-                    alt={product.name + ' Image'}
-                />
-                <div className='ProductDetail__details'>
-                    <h2 className='ProductDetail__name'>{product.name}</h2>
-                    <Link to={'/category/' + product.category.spaceless_name}>
-                        <p className='ProductDetail__category'>{product.category.name}</p>
-                    </Link>
-                    <div className='ProductDetail__price-container'>
-                        <p className='ProductDetail__text'>We Sell for: 
-                        <span className='ProductDetail__price'> {toCurrency(product.sell)}</span></p>
-                        {(product.buy) ? (
-                            <p className='ProductDetail__text'>Trade in for Cash: 
-                            <span className='ProductDetail__price'> {toCurrency(product.buy)}</span></p>
-                        ) : null}
-                        {(product.exch) ? (
-                            <p className='ProductDetail__text'>Trade in for Exchange: 
-                            <span className='ProductDetail__price'> {toCurrency(product.exch)}</span></p>
-                        ) : null}
+            (notFound) ? (
+                <NotFound/>
+            ) : (
+                <div className='ProductDetail__detail-container'>
+                    <img
+                        className='ProductDetail__image'
+                        src={process.env.PUBLIC_URL + '/products/' + product.itemID + '.jpg'}
+                        alt={product.name + ' Image'}
+                    />
+                    <div className='ProductDetail__details'>
+                        <h2 className='ProductDetail__name'>{product.name}</h2>
+                        <Link to={'/category/' + product.category.spaceless_name}>
+                            <p className='ProductDetail__category'>{product.category.name}</p>
+                        </Link>
+                        <div className='ProductDetail__price-container'>
+                            <p className='ProductDetail__text'>We Sell for: 
+                            <span className='ProductDetail__price'> {toCurrency(product.sell)}</span></p>
+                            {(product.buy) ? (
+                                <p className='ProductDetail__text'>Trade in for Cash: 
+                                <span className='ProductDetail__price'> {toCurrency(product.buy)}</span></p>
+                            ) : null}
+                            {(product.exch) ? (
+                                <p className='ProductDetail__text'>Trade in for Exchange: 
+                                <span className='ProductDetail__price'> {toCurrency(product.exch)}</span></p>
+                            ) : null}
+                        </div>
+
+                        <div className='ProductDetail__stock-box'>
+                            {(product.stock === 0) ? (
+                                null
+                            ) : (
+                                <AddToBasket itemID={product.itemID} />
+                            )}
+                            {(product.stock === 0) ? (
+                                <p className='ProductDetail__stock ProductDetail__stock--zero'>Out of stock</p>
+                            ) : (product.stock > 9) ? (
+                                <p className='ProductDetail__stock'>10+ Available</p>
+                            ) : (
+                                <p className='ProductDetail__stock'>{product.stock} in Stock</p>
+                            )}
+                        </div>
                     </div>
-
-                    <div className='ProductDetail__stock-box'>
-                        {(product.stock === 0) ? (
-                            null
-                        ) : (
-                            <AddToBasket itemID={product.itemID} />
-                        )}
-                        {(product.stock === 0) ? (
-                            <p className='ProductDetail__stock ProductDetail__stock--zero'>Out of stock</p>
-                        ) : (product.stock > 9) ? (
-                            <p className='ProductDetail__stock'>10+ Available</p>
-                        ) : (
-                            <p className='ProductDetail__stock'>{product.stock} in Stock</p>
-                        )}
-                    </div>
-
-
                 </div>
-            </div> }
+            )}
 
-            {(_loading) ? (
+            {(_loading || notFound) ? (
                 null
             ) : (
                 <SimilarItems

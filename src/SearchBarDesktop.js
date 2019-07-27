@@ -35,6 +35,7 @@ const SearchBarDesktop = (props) => {
         <div className='SearchBarDesktop__container'>
             <form className='SearchBarDesktop__form' onSubmit={validateSubmit}>
                 <input
+                    id='SearchBar'
                     className='SearchBarDesktop__input'
                     ref={searchInput}
                     value={input}
