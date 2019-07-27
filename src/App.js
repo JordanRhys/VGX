@@ -12,6 +12,7 @@ import BasketDetail from './BasketDetail';
 import Footer from './Footer';
 import ScrollToTop from './ScrollToTop';
 import NotFound from './NotFound';
+import About from './About';
 
 const BasketContext = createContext();
 
@@ -43,6 +44,11 @@ const App = () => {
           exact
           path='/'
           component={HomePage}
+        />
+
+        <Route
+          path='/about'
+          component={About}
         />
 
         <Route
