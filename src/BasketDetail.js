@@ -75,7 +75,10 @@ const BasketDetail = () => {
             <Link to={'/product/' + product.itemID}>
                 <img
                     className='BasketDetail__image'
-                    src={process.env.PUBLIC_URL + '/products/' + product.itemID + '.png'}
+                    srcSet={`
+                        ${process.env.PUBLIC_URL}/products/${product.itemID}-thumb.jpg 1x,
+                        ${process.env.PUBLIC_URL}/products/${product.itemID}-thumb-2x.jpg 2x
+                    `}
                     alt={product.name + ' Image'}
                 />
             </Link>
