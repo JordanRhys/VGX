@@ -8,7 +8,7 @@ const Logo = (props) => {
       <div className='Logo__container'>
           <img
             className='Logo__img'
-            src={process.env.PUBLIC_URL + '/VGX.png'}
+            src={process.env.PUBLIC_URL + '/VGX.svg'}
             alt='VGX Logo'
           />
       </div>

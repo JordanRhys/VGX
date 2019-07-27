@@ -7,7 +7,7 @@ const Footer = () => {
         <footer className='Footer__container'>
             <img
                 className='Footer__img'
-                src={process.env.PUBLIC_URL + '/VGX.png'}
+                src={process.env.PUBLIC_URL + '/VGX.svg'}
                 alt='VGX Logo'
             />
             <p className='Footer__text'>
