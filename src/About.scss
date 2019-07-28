@@ -7,7 +7,6 @@
         padding: 1rem;
         font-size: var(--font-size-small);
         background-color: var(--color-white);
-        text-align: center;
         color: var(--color-grey-darker);
 
         @include respond(tabland) {
