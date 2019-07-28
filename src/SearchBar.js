@@ -22,7 +22,6 @@ const SearchBar = (props) => {
 
     const validateSubmit = (e) => {
         e.preventDefault();
-        console.log(input);
         if (input !== '') {
             props.toggleSearch();
             props.history.push(redirect);

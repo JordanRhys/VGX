@@ -80,7 +80,6 @@ const HeaderBar = (props) => {
         <Logo closeAll={closeAll}/>
 
         <div className='HeaderBar__right'>
-          {/* <UserIcon/> */}
           <BasketIcon basketItems={props.basketItems}/>
         </div>
         

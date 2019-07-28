@@ -27,7 +27,6 @@ const SearchDropdown = (props) => {
                 console.log(res.status);
             }
         }).then(function(res) {
-            console.log(res)
             return res.json()
         }).then(function(res) {
             if (isMounted) {

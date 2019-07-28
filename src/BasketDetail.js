@@ -28,13 +28,11 @@ const BasketDetail = () => {
         return new Promise((resolve, reject) => {
             let basket = JSON.parse(localStorage.getItem('basket'));
             basket.join(',');
-            console.log(basket);
             resolve(basket);
         })
     }
 
     const fetchProducts = (basket) => {
-        console.log('/server/basket/' + basket)
         fetch(('/server/basket/' + basket), {
             headers: {
                 Accept: 'application/json'
@@ -46,7 +44,6 @@ const BasketDetail = () => {
                 console.log(res.status);
             }
         }).then(function(res) {
-            console.log(res)
             if (res !== undefined) {
                 return res.json();
             }
@@ -65,7 +62,6 @@ const BasketDetail = () => {
         let newBasket = basket.filter((product) => (
             product !== itemID
         ));
-        console.log(newBasket);
         localStorage.setItem('basket', JSON.stringify(newBasket));
 
         let filtered = products.filter((product) => (

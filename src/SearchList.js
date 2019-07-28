@@ -31,7 +31,6 @@ const SearchList = (props) => {
     }, [products])
 
     const fetchProducts = () => {
-        console.log(props.path + props.match.params.search)
         fetch((props.path + props.match.params.search), {
             headers: {
                 Accept: 'application/json'
@@ -43,7 +42,6 @@ const SearchList = (props) => {
                 console.log(res.status);
             }
         }).then(function(res) {
-            console.log(res)
             return res.json()
         }).then(function(res) {
             if (isMounted) {
@@ -81,7 +79,6 @@ const SearchList = (props) => {
                 filterPrice(obj)
             ))
             .then((products) => {
-                console.log(products);
                 if (products.length > 0) {
                     setFilteredProducts(products);
                 } else {
@@ -96,7 +93,6 @@ const SearchList = (props) => {
 
     const filterCategories = (obj) => {
         return new Promise((resolve, reject) => {
-            console.log(obj);
             if (obj.categories.length > 0) {
                 const filtered = products.filter((product) => (
                     obj.categories.indexOf(product.category.name) !== -1
@@ -119,7 +115,6 @@ const SearchList = (props) => {
     }
 
     const filterStocked = (obj) => {
-        console.log(obj);
         if (obj.stocked) {
             const filtered = obj.products.filter((product) => (
                 product.stock > 0
@@ -142,7 +137,6 @@ const SearchList = (props) => {
     }
 
     const filterPrice = (obj) => {
-        console.log(obj);
         const filtered = obj.products.filter((product) => (
             product.sell >= obj.min && product.sell <= obj.max
         )) || [];
@@ -207,7 +201,6 @@ const SearchList = (props) => {
                     return b.sell - a.sell
                 })
             }    
-            console.log(items);
             resolve({
                 items: items,
                 filtered: filtered
@@ -219,12 +212,9 @@ const SearchList = (props) => {
     }
 
     const setSortedItems = (obj) => {
-        console.log(obj)
         if (obj.filtered) {
-            console.log(obj.items);
             setFilteredProducts(obj.items);
         } else {
-            console.log(obj.items);
             setProducts(obj.items);
         }
         if (isMounted) {

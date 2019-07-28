@@ -28,7 +28,6 @@ const AddToBasket = (props) => {
         if (localStorage.getItem('basket')) {
             basket = JSON.parse(localStorage.getItem('basket'));
             basket.push(itemID);
-            console.log(basket);
             localStorage.setItem('basket', JSON.stringify(basket));
 
 
@@ -37,7 +36,6 @@ const AddToBasket = (props) => {
             localStorage.setItem('basket', JSON.stringify(basket));
         }
 
-        console.log(localStorage.getItem('basket'));
         setInBasket(true);
         updateBasketIndicator();
     }
@@ -48,7 +46,6 @@ const AddToBasket = (props) => {
         let newBasket = basket.filter((product) => (
             product !== itemID
         ));
-        console.log(newBasket);
         localStorage.setItem('basket', JSON.stringify(newBasket));
         setInBasket(false);
         updateBasketIndicator();

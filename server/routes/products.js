@@ -18,7 +18,6 @@ router.get('/topproducts', (req, res, next) => {
             results.map((product) => {
                 extracted.push(product.product)
             });
-            console.log(extracted);
             if (!err) { 
                 res.json(extracted);
             } else {
@@ -33,7 +32,6 @@ router.get('/recent', (req, res, next) => {
         .limit(10)
         .sort({release_date: -1})
         .exec((err, results) => {
-            console.log(results)
             if (!err) { 
                 res.json(results)
             } else {
@@ -63,10 +61,8 @@ router.get('/product/similar/:category/:names', (req, res, next) => {
                 .exec(callback);
         }
     }, function(err, results) {
-        console.log(results)
         if (!err) {
             if (results === undefined) {
-                console.log(results);
                 res.json([]);
             } else {
                 let joined = results.byName.concat(results.byCat);
@@ -88,7 +84,6 @@ router.get('/product/similar/:category/:names', (req, res, next) => {
 
 router.get('/product/:itemID', (req, res, next) => {
     Product.findOne({itemID: req.params.itemID}).populate('category').exec((err, result) => {
-        console.log(result)
         if (!err) {
             if (result === undefined) {
                 res.json({
@@ -105,7 +100,6 @@ router.get('/product/:itemID', (req, res, next) => {
 
 router.get('/categories', (req, res, next) => {
     Category.find().exec((err, results) => {
-        console.log(results)
         if (!err) {
             if (results === undefined) {
                 res.json({
@@ -128,7 +122,6 @@ router.get('/category/:name', (req, res, next) => {
         .exec((err, result) => {
         if (!err) {
             if (result === undefined) {
-                console.log("RESULT IS UNDEFINED")
                 res.json({
                     "name": "Category not found"
                 })
@@ -160,7 +153,6 @@ router.get('/category/:name', (req, res, next) => {
 
 router.get('/search/dropdown/:search', (req, res, next) => {
     const similar = req.params.search;
-    console.log(similar);
     Product
         .find({"name": {$regex: similar, $options: 'i'}})
         .limit(3)
@@ -168,7 +160,6 @@ router.get('/search/dropdown/:search', (req, res, next) => {
         .exec((err, result) => {
             if (!err) {
                 if (result === undefined || result.length === 0) {
-                    console.log('Search is Undefined');
                     res.json([]);
                 } else {
                     res.json(result);
@@ -181,14 +172,12 @@ router.get('/search/dropdown/:search', (req, res, next) => {
 
 router.get('/search/:search', (req, res, next) => {
     const similar = req.params.search;
-    console.log(similar);
     Product
         .find({"name": {$regex: similar, $options: 'i'}})
         .populate('category')
         .exec((err, result) => {
             if (!err) {
                 if (result === undefined || result.length === 0) {
-                    console.log('Search is Undefined');
                     res.json([]);
                 } else {
                     res.json(result);
@@ -210,7 +199,6 @@ router.get('/basket/:items', (req, res, next) => {
         .exec((err, results) => {
             if (!err) {
                 if (results === undefined || results.length === 0) {
-                    console.log('Search is Undefined or Length 0')
                     res.json({
                         "name": "Products not found"
                     });
