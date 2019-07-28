@@ -1,9 +1,16 @@
+@import 'MediaQuery';
+
 .BasketDetail {
     
-    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+
+    @include respond(tabland) {
+        margin: .5rem;
+        box-shadow: var(--shadow-solid);
+    }
 
     &__container {
         width: 100%;

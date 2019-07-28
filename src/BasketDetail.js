@@ -6,12 +6,14 @@ import './BasketDetail.scss';
 import { toCurrency } from './helpers';
 
 import LoadIcon from './LoadIcon';
+import ProcessOrder from './ProcessOrder';
 
 const BasketDetail = () => {
     const api = useContext(BasketContext);
 
     const [_loading, _setLoading] = useState(true);
     const [products, setProducts] = useState([]);
+    const [processing, setProcessing] = useState(false);
 
     useEffect(() => {
         pullLocal()
@@ -70,6 +72,10 @@ const BasketDetail = () => {
         api();
     }
 
+    const processOrder = () => {
+        setProcessing(true);
+    }
+
     const productList = products.map((product) => (
         <li className='BasketDetail__list-item' key={product.itemID}>
             <Link to={'/product/' + product.itemID}>
@@ -116,6 +122,10 @@ const BasketDetail = () => {
         return (
             <LoadIcon/>
         );
+    
+    } else if (processing) {
+        return <ProcessOrder/>
+
     } else if (products.length === 0) {
         return (
             <section className='BasketDetail'>
@@ -125,6 +135,7 @@ const BasketDetail = () => {
                 <p className='BasketDetail__text'>Your basket is empty</p>
             </section>
         );
+
     } else {
         return (
             <section className='BasketDetail'>
@@ -146,7 +157,10 @@ const BasketDetail = () => {
                     <div className='BasketDetail__row'>
                         <p className='BasketDetail__text'>Grand Total:</p>
                         <p className='BasketDetail__value'>{totalString}</p>
-                        <button className='BasketDetail__checkout'>Checkout</button>
+                        <button
+                            className='BasketDetail__checkout'
+                            onClick={processOrder}
+                        >Checkout</button>
                     </div>
                 </div>
             </section>

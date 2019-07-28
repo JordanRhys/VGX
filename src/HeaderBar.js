@@ -63,7 +63,7 @@ const HeaderBar = (props) => {
   }
 
   return (
-    <nav className='HeaderBar__container Universal__box-shadow'>
+    <nav className='HeaderBar__container'>
       <div className='HeaderBar__bar'>
 
         <div className='HeaderBar__left'>
