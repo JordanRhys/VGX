@@ -10,6 +10,7 @@ import ProcessOrder from './ProcessOrder';
 
 const BasketDetail = () => {
     const api = useContext(BasketContext);
+    let isMounted = true;
 
     const [_loading, _setLoading] = useState(true);
     const [products, setProducts] = useState([]);
@@ -19,6 +20,8 @@ const BasketDetail = () => {
         pullLocal()
             .then((basket) => { fetchProducts(basket)})
             .catch((error) => { console.log(error) });
+
+        return () => { isMounted = false; }
     }, []);
 
     const pullLocal = () => {
@@ -48,10 +51,12 @@ const BasketDetail = () => {
                 return res.json();
             }
         }).then(function(res) {
-            if (res !== undefined) {
-                setProducts(res)
+            if (isMounted) {
+                if (res !== undefined) {
+                    setProducts(res)
+                }
+                _setLoading(false);
             }
-            _setLoading(false)
         });
     }
 

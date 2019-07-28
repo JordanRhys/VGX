@@ -15,8 +15,12 @@ const SearchList = (props) => {
     const [filtered, setFiltered] = useState(false);
     const [sortBy, setSortBy] = useState();
 
+    let isMounted = true;
+
     useEffect(() => {
         fetchProducts();
+
+        return () => { isMounted = false; }
     }, [props.match.params.search])
 
     // Grab used Categories from products
@@ -42,9 +46,11 @@ const SearchList = (props) => {
             console.log(res)
             return res.json()
         }).then(function(res) {
-            setProducts(res)
-            resetFilters()
-            _setLoading(false)
+            if (isMounted) {
+                setProducts(res)
+                resetFilters()
+                _setLoading(false)
+            }
         });
     }
 
@@ -81,7 +87,9 @@ const SearchList = (props) => {
                 } else {
                     setFilteredProducts([]);
                 }
-                setFiltered(true);
+                if (isMounted) {
+                    setFiltered(true);
+                }
             })
             .catch((error) => console.log(error));
     }
@@ -142,8 +150,10 @@ const SearchList = (props) => {
     }
 
     const resetFilters = () => {
-        setFiltered(false);
-        setFilteredProducts([]);
+        if (isMounted) {
+            setFiltered(false);
+            setFilteredProducts([]);
+        }
     }
 
     const sortItems = (sort) => {
@@ -202,7 +212,9 @@ const SearchList = (props) => {
                 items: items,
                 filtered: filtered
             });
-            _setLoading(true);
+            if (isMounted) {
+                _setLoading(true);
+            }
         }).then((obj) => {setSortedItems(obj)})
     }
 
@@ -215,7 +227,9 @@ const SearchList = (props) => {
             console.log(obj.items);
             setProducts(obj.items);
         }
-        _setLoading(false);
+        if (isMounted) {
+            _setLoading(false);
+        }
     }
 
     const productList = products.map((product) => (

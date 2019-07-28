@@ -7,8 +7,12 @@ import { toCurrency } from './helpers';
 const SearchDropdown = (props) => {
     const [products, setProducts] = useState([]);
 
+    let isMounted = true;
+
     useEffect(() => {
         fetchProducts();
+
+        return () => { isMounted = false; }
     }, [props.search]);
 
     const fetchProducts = () => {
@@ -26,7 +30,9 @@ const SearchDropdown = (props) => {
             console.log(res)
             return res.json()
         }).then(function(res) {
-            setProducts(res)
+            if (isMounted) {
+                setProducts(res)
+            }
         });
     }
 

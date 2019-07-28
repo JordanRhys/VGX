@@ -13,10 +13,14 @@ const ProductDetail = (props) => {
     const [_loading, _setLoading] = useState(true);
     const [notFound, setNotFound] = useState(false);
 
+    let isMounted = true;
+
     useEffect(() => {
         _setLoading(true);
         setNotFound(false);
         loadProduct(props.match.params.itemID);
+
+        return () => { isMounted = false; }
     }, [props.match.params.itemID])
 
     useEffect(() => {
@@ -42,12 +46,14 @@ const ProductDetail = (props) => {
         }).then(function(res) {
             return res.json()
         }).then(function(res) {
-            if (res === null) {
-                setNotFound(true);
-            } else {
-                setProduct(res);
+            if (isMounted) {
+                if (res === null) {
+                    setNotFound(true);
+                } else {
+                    setProduct(res);
+                }
+                _setLoading(false);
             }
-            _setLoading(false);
         });
     }
 

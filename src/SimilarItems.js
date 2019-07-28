@@ -6,11 +6,15 @@ import ProductThumbnail from './ProductThumbnail';
 const SimilarItems = (props) => {
     const [products, setProducts] = useState([]);
 
+    let isMounted = true;
+
     const nameSplit = props.product.name.split(' ');
     const nameString = nameSplit.join(',');
 
     useEffect(() => {
         fetchProducts()
+
+        return () => { isMounted = false; }
     }, [])
 
     const fetchProducts = () => {
@@ -30,7 +34,9 @@ const SimilarItems = (props) => {
             }
             return res.json()
         }).then(function(res) {
-            setProducts(res)
+            if (isMounted) {
+                setProducts(res);
+            }
         });
     }
 

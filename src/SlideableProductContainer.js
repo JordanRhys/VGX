@@ -6,10 +6,14 @@ import ProductThumbnail from './ProductThumbnail';
 const SlideableProductContainer = (props) => {
     const [products, setProducts] = useState([]);
 
+    let isMounted = true;
+
     useEffect(() => {
         if (products.length < 1) {
             FetchProducts()
         }
+
+        return () => { isMounted = false; }
     })
 
     const FetchProducts = () => {
@@ -26,8 +30,9 @@ const SlideableProductContainer = (props) => {
         }).then(function(res) {
             return res.json()
         }).then(function(res) {
-            console.log(res);
-            setProducts(res)
+            if (isMounted) {
+                setProducts(res);
+            }
         });
     }
 
