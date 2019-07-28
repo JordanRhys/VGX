@@ -31,7 +31,7 @@ const SearchDropdown = (props) => {
     }
 
     const productsMap = products.map((product) => (
-        <Link to={'/product/' + product.itemID} onClick={props.toggleSearch}>
+        <Link to={'/product/' + product.itemID} onClick={props.toggleSearch} key={'dropdown' + product.itemID}>
             <li
                 className='SearchDropdown__list-item'
             >
