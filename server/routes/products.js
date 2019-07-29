@@ -83,7 +83,10 @@ router.get('/product/similar/:category/:names', (req, res, next) => {
 })
 
 router.get('/product/:itemID', (req, res, next) => {
-    Product.findOne({itemID: req.params.itemID}).populate('category').exec((err, result) => {
+    Product
+        .findOne({itemID: req.params.itemID})
+        .populate('category')
+        .exec((err, result) => {
         if (!err) {
             if (result === undefined) {
                 res.json({
@@ -99,7 +102,9 @@ router.get('/product/:itemID', (req, res, next) => {
 })
 
 router.get('/categories', (req, res, next) => {
-    Category.find().exec((err, results) => {
+    Category
+        .find()
+        .exec((err, results) => {
         if (!err) {
             if (results === undefined) {
                 res.json({
@@ -118,7 +123,7 @@ router.get('/category/:name', (req, res, next) => {
 
     var cat;
     Category
-        .findOne({"spaceless_name": req.params.name})
+        .findOne({"name": req.params.name}, '_id')
         .exec((err, result) => {
         if (!err) {
             if (result === undefined) {
@@ -170,20 +175,92 @@ router.get('/search/dropdown/:search', (req, res, next) => {
         })
 })
 
+// router.get('/search/:search', (req, res, next) => {
+//     const similar = req.params.search;
+//     Product
+//         .find({"name": {$regex: similar, $options: 'i'}, })
+//         .populate('category')
+//         .exec((err, result) => {
+//             if (!err) {
+//                 if (result === undefined || result.length === 0) {
+//                     res.json([]);
+//                 } else {
+//                     res.json(result);
+//                 }
+//             } else {
+//                 console.log(err);
+//             }
+//         })
+// })
+
 router.get('/search/:search', (req, res, next) => {
-    const similar = req.params.search;
-    Product
-        .find({"name": {$regex: similar, $options: 'i'}})
-        .populate('category')
+    function titleCase(str) {
+        str = str.toLowerCase();
+        str = str.split(' ');
+        for (let i = 0; i < str.length; i++) {
+            str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1);
+        }
+        return str.join(' ');
+    }
+    const search = titleCase(req.params.search);
+    const searchSplit = search.split(' ');
+    
+    Category
+        .find({'name': {$regex: `${searchSplit[0]}`, $options: 'i'}})
         .exec((err, result) => {
-            if (!err) {
-                if (result === undefined || result.length === 0) {
-                    res.json([]);
-                } else {
-                    res.json(result);
-                }
-            } else {
+
+            if (err) {
                 console.log(err);
+            } else {
+
+                if (result === undefined || result === null) {
+                    Product
+                    .find({"name": {$regex: search, $options: 'i'}})
+                    .populate('category')
+                    .exec((err, results) => {
+                        if (!err) {
+                            res.json(results);
+                        } else {
+                            console.log(err);
+                        }
+                    });
+                    
+                } else {
+                    const singleCat = result.filter((cat) => (
+                         cat.name.includes(searchSplit[1])
+                    ));
+
+                    async.parallel({
+                        byCat: function(callback) {
+                            Product
+                                .find({"category": singleCat})
+                                .populate('category')
+                                .exec(callback);
+                        }, 
+                        byName: function(callback) {
+                            Product
+                                .find({"name": {$regex: search, $options: 'i'}})
+                                .populate('category')
+                                .exec(callback);
+                        }
+                        
+                    }, function(err, results) {
+                        if (!err) {
+                            let joined = results.byName.concat(results.byCat);
+                            let ids = [];
+                            let filtered = [];
+                            joined.map((product) => {
+                                if (ids.indexOf(product.itemID) === -1) {
+                                    filtered.push(product);
+                                    ids.push(product.itemID);
+                                };
+                            });
+                            res.json(filtered);
+                        } else {
+                            console.log(err);
+                        }
+                    })
+                }
             }
         })
 })

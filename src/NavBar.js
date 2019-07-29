@@ -7,7 +7,7 @@ const NavBar = (props) => {
 
     const links = props.categories.map((cat) => {
         return(
-            <Link onClick={props.toggleOpen} key={cat.name} to={'/category/' + cat.spaceless_name}>
+            <Link onClick={props.toggleOpen} key={cat.name} to={'/category/' + cat.name}>
                 <li className='NavBar__link'>{cat.name}</li>
             </Link>
         )
