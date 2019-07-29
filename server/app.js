@@ -9,7 +9,7 @@ var productsRouter = require('./routes/products');
 const apiKey = process.env.DB_KEY;
 
 var mongoose = require('mongoose');
-var mongoDB = apiKey;
+var mongoDB = "mongodb+srv://jordan:uHyWLakjZp3TQvbf@cluster0-eyvt0.mongodb.net/VGX?retryWrites=true&w=majority";
 mongoose.connect(mongoDB, { useNewUrlParser: true });
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB Connection Error:'));
