@@ -230,12 +230,26 @@ router.get('/search/:search', (req, res, next) => {
                          cat.name.includes(searchSplit[1])
                     ));
 
+                    let catIDs = [];
+
+                    result.forEach((cat) => {
+                        catIDs.push(cat._id);
+                    });
+
                     async.parallel({
                         byCat: function(callback) {
-                            Product
-                                .find({"category": singleCat})
-                                .populate('category')
-                                .exec(callback);
+                            if (searchSplit.length > 1) {
+                                Product
+                                    .find({"category": singleCat})
+                                    .populate('category')
+                                    .exec(callback);
+                            } else {
+                                
+                                Product
+                                    .find({"category": {$in: catIDs}})
+                                    .populate('category')
+                                    .exec(callback);
+                            }
                         }, 
                         byName: function(callback) {
                             Product
