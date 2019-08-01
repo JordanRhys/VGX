@@ -1,0 +1,14 @@
+.Logo {
+
+    &__container {
+        margin: .5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+
+    &__img {
+        width: 4.5rem;
+    }
+}

@@ -1,0 +1,149 @@
+.SearchFilterDesktop {
+
+    &__container {
+        width: 20rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        font-size: var(--font-size-small);
+        color: var(--color-grey-darker);
+    }
+    
+    &__sub-container {
+        margin: .5rem;
+        padding: 1rem;
+        background-color: var(--color-white);
+        box-shadow: 3px 4px 0 0 rgb(230,230,230);
+    }
+
+    &__dropdown {
+        width: 100%;
+    }
+
+    &__filter {
+        width: 50%;
+        border-right: 1px solid var(--color-grey-midlight);
+        cursor: pointer;
+    }
+
+    &__sort {
+        width: 50%;
+        cursor: pointer;
+    }
+
+    &__header {
+        margin: 0 0 .5rem 0;
+        color: var(--color-grey-dark);
+        font-weight: 600;
+    }
+
+    &__small-header {
+        margin: 0 0 .5rem 0;
+        color: var(--color-grey-dark);
+    }
+
+    &__sub-header {
+        font-size: var(--font-size-smaller);
+        margin: 0;
+    }
+
+    &__price {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    &__price-input {
+        width: 3rem;
+        height: 1.8rem;
+        font-size: var(--font-size-small);
+        text-align: center;
+        border-radius: .4rem;
+        border: 1px solid var(--color-grey-midlight);
+        margin-left: .2rem;
+    }
+
+    &__filter-panel {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        padding: 0 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    &__filter-list {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        list-style: none;
+        align-items: center;
+        margin: 0 0 .5rem 0;
+        padding: 0 0 .5rem 0;
+    }
+
+    &__filter-item {
+        width: 100%;
+        height: 1.5rem;
+        padding: .2rem .8rem;
+        font-size: var(--font-size-smaller);
+        cursor: pointer;
+
+        &--borderless:only-child {
+            border-right: none;
+        }
+    }
+
+    &__checkbox-row {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        position: relative;
+    }
+
+    &__label {
+        padding-right: 2.5rem;
+        margin-right: -2.5rem;
+        display: block;
+        cursor: pointer;
+        position: relative;
+        z-index: 2;
+    }
+
+    &__button-row {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 1rem;
+    }
+
+    &__button {
+        width: 10rem;
+        height: 2.5rem;
+        border-radius: .2rem;
+        border: none;
+        outline: none;
+        color: var(--color-white);
+        background-color: var(--color-primary);
+        border-bottom: 1px solid var(--color-primary-dark);
+        font-size: var(--font-size-small);
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    &__reset {
+        margin: 0;
+        color: red;
+        font-size: var(--font-size-small);
+        cursor: pointer;
+    }
+}
+
+#stockCheck {
+    display: none;
+}

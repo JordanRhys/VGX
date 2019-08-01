@@ -1,0 +1,48 @@
+.NavBar {
+
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 3rem;
+    left: 0;
+    z-index: 5;
+    display: flex;
+    font-size: var(--font-size-small);
+
+    &__greyout {
+        background-color: rgba(0,0,0,.15);
+        flex: 1;
+    }
+
+    &__container {
+        width: 16rem;
+        height: 100vh;
+        background-color: var(--color-primary-light);
+        z-index: 10;
+    }
+
+    &__list, &__cat-list {
+        list-style: none;
+        padding: 0 1rem;
+
+        & a {
+            display: block;
+
+            &:not(:last-child) {
+                margin-bottom: .75rem;
+            }
+        }
+    }
+
+    &__cat-list {
+        margin-top: .5rem;
+    }
+
+    &__link {
+        cursor: pointer;
+
+        &--active {
+            font-weight: 600;
+        }
+    }
+}
