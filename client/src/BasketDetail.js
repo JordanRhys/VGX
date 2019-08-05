@@ -33,28 +33,32 @@ const BasketDetail = () => {
     }
 
     const fetchProducts = (basket) => {
-        fetch(('/server/basket/' + basket), {
-            headers: {
-                Accept: 'application/json'
-            }
-        }).then(function(res) {
-            if (res.status >= 200 && res.status <= 300) {
-                return res;
-            } else {
-                console.log(res.status);
-            }
-        }).then(function(res) {
-            if (res !== undefined) {
-                return res.json();
-            }
-        }).then(function(res) {
-            if (isMounted) {
-                if (res !== undefined) {
-                    setProducts(res)
+        if (JSON.parse(localStorage.getItem('basket'))) {
+            fetch(('/server/basket/' + basket), {
+                headers: {
+                    Accept: 'application/json'
                 }
-                _setLoading(false);
-            }
-        });
+            }).then(function(res) {
+                if (res.status >= 200 && res.status <= 300) {
+                    return res;
+                } else {
+                    console.log(res.status);
+                }
+            }).then(function(res) {
+                if (res !== undefined) {
+                    return res.json();
+                }
+            }).then(function(res) {
+                if (isMounted) {
+                    if (res !== undefined) {
+                        setProducts(res)
+                    }
+                    _setLoading(false);
+                }
+            });
+        } else {
+            _setLoading(false);
+        }
     }
 
     const removeItem = (itemID) => {
