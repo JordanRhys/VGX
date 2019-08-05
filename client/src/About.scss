@@ -3,7 +3,8 @@
 .About {
 
     &__container {
-        width: 100%;
+        display: flex;
+        flex-direction: column;
         padding: 1rem;
         font-size: var(--font-size-small);
         background-color: var(--color-white);
