@@ -33,7 +33,7 @@ const BasketDetail = () => {
     }
 
     const fetchProducts = (basket) => {
-        if (JSON.parse(localStorage.getItem('basket'))) {
+        if (basket) {
             fetch(('/server/basket/' + basket), {
                 headers: {
                     Accept: 'application/json'
