@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react';
 import Media from 'react-media';
 import './HeaderBar.scss';
 
+import {CSSTransition} from 'react-transition-group';
+
 import Logo from './Logo';
 import NavIcon from './NavIcon';
 import SearchIcon from './SearchIcon';
@@ -84,9 +86,17 @@ const HeaderBar = (props) => {
         </div>
         
       </div>
-      {(menuOpen) ? (
+      {/* {(menuOpen) ? (
+          <NavBar categories={categories} toggleOpen={toggleMenu}/>
+      ) : null} */}
+      <CSSTransition
+        in={menuOpen}
+        timeout={400}
+        classNames='nav-transition'
+        unmountOnExit
+      >
         <NavBar categories={categories} toggleOpen={toggleMenu}/>
-      ) : null}
+      </CSSTransition>
       {(searchOpen) ? (
         <SearchBar toggleSearch={toggleSearch}/>
       ) : null}
