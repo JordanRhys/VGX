@@ -1,5 +1,6 @@
 import React, { useState, useEffect, createContext } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
+import {CSSTransition} from 'react-transition-group';
 import './App.scss';
 import './Universal.scss';
 import './Variables.scss';
@@ -13,6 +14,7 @@ import Footer from './Footer';
 import ScrollToTop from './ScrollToTop';
 import NotFound from './NotFound';
 import About from './About';
+import AppRoutes from './AppRoutes';
 
 const BasketContext = createContext();
 
@@ -39,45 +41,7 @@ const App = () => {
       <div className='App__container'>
         <HeaderBar basketItems={basketItems}/>
         <span className="App__top-padding"/>
-        <Switch>
-        <Route
-          exact
-          path='/'
-          component={HomePage}
-        />
-
-        <Route
-          path='/about'
-          component={About}
-        />
-
-        <Route
-          path='/product/:itemID'
-          render={(props) => (<ScrollToTop>
-              <ProductDetail {...props}/>
-            </ScrollToTop>)}
-        />
-
-        <Route
-          path='/category/:search'
-          render={(props) => (<SearchList {...props} path='/server/category/' />)}
-        />
-
-        <Route
-          path='/search/:search'
-          render={(props) => (<SearchList {...props} path='/server/search/' />)}
-        />
-
-        <Route
-          path='/basket'
-          component={BasketDetail}
-        />
-
-        <Route
-          path='*'
-          component={NotFound}
-        />
-        </Switch>
+        <AppRoutes/>
       </div>
       <Footer/>
     </BasketContext.Provider>
@@ -85,5 +49,5 @@ const App = () => {
 }
 
 
-export default App;
+export default withRouter(App);
 export {BasketContext};

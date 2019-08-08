@@ -28,3 +28,23 @@
   }
 }
 
+.fade {
+
+  &-enter {
+    opacity: 0;
+  }
+
+  &-enter-active {
+    opacity: 1;
+    transition: all 100ms 100ms;
+  }
+
+  &-exit {
+    opacity: 1;
+  }
+
+  &-exit-active {
+    opacity: 0;
+    transition: all 100ms;
+  }
+}
