@@ -9,11 +9,13 @@
     }
     
     &__bar {
+        position: relative;
         height: 3rem;
         display: flex;
         align-items: center;
         justify-content: space-between;
         background-color: var(--color-primary-light);
+        z-index: 15;
 
         @include respond(tabland) {
             padding: 0 .5rem;

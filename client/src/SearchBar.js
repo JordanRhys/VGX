@@ -1,5 +1,6 @@
 import React, {useState, useRef} from 'react';
 import {withRouter} from 'react-router-dom';
+import {CSSTransition} from 'react-transition-group';
 import './SearchBar.scss';
 
 import SearchDropdown from './SearchDropdown';
@@ -30,7 +31,7 @@ const SearchBar = (props) => {
 
     return (
         <div className='SearchBar__container'>
-            <form className='SearchBar__form' onSubmit={validateSubmit}>
+            <form className='SearchBar__form' onSubmit={validateSubmit} autoComplete='off'>
                 <input
                     id='SearchBar'
                     className='SearchBar__input'
@@ -50,7 +51,14 @@ const SearchBar = (props) => {
                     <div className='SearchBar__close' onClick={clearInput}>&#10006;</div>
                 ) : null}
             </form>
-            <SearchDropdown search={input} toggleSearch={props.toggleSearch}/>
+            <CSSTransition
+                in={input}
+                timeout={200}
+                classNames='dropdown-transition'
+                unmountOnExit
+            >
+                <SearchDropdown search={input} toggleSearch={props.toggleSearch}/>
+            </CSSTransition>
         </div>
     )
 }

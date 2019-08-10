@@ -97,9 +97,17 @@ const HeaderBar = (props) => {
       >
         <NavBar categories={categories} toggleOpen={toggleMenu}/>
       </CSSTransition>
-      {(searchOpen) ? (
+      <CSSTransition
+        in={searchOpen}
+        timeout={400}
+        classNames='search-transition'
+        unmountOnExit
+      >
         <SearchBar toggleSearch={toggleSearch}/>
-      ) : null}
+      </CSSTransition>
+      {/* {(searchOpen) ? (
+        <SearchBar toggleSearch={toggleSearch}/>
+      ) : null} */}
     </nav>
   );
 }

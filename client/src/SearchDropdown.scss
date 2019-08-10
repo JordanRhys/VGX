@@ -67,3 +67,25 @@
         }
     }
 }
+
+//React Transitions
+.dropdown-transition {
+
+    &-enter {
+        opacity: 0.01;
+    }
+
+    &-enter-active {
+        opacity: 1;
+        transition: all 200ms;
+    }
+
+    &-exit {
+        opacity: 1;
+    }
+
+    &-exit-active {
+        opacity: 0.01;
+        transition: all 200ms;
+    }
+}

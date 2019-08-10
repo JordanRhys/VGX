@@ -1,5 +1,6 @@
 import React, {useState, useRef, useEffect} from 'react';
 import {withRouter} from 'react-router-dom';
+import {CSSTransition} from 'react-transition-group';
 import './SearchBarDesktop.scss';
 
 import SearchDropdown from './SearchDropdown';
@@ -33,7 +34,7 @@ const SearchBarDesktop = (props) => {
 
     return (
         <div className='SearchBarDesktop__container'>
-            <form className='SearchBarDesktop__form' onSubmit={validateSubmit}>
+            <form className='SearchBarDesktop__form' onSubmit={validateSubmit} autoComplete='off'>
                 <input
                     id='SearchBar'
                     className='SearchBarDesktop__input'
@@ -48,9 +49,14 @@ const SearchBarDesktop = (props) => {
                     </svg>
                 </button>
             </form>
-            {(input) ? (
+            <CSSTransition
+                in={input}
+                timeout={200}
+                classNames='dropdown-transition'
+                unmountOnExit
+            >
                 <SearchDropdown search={input} toggleSearch={resetInput}/>
-            ) : null}
+            </CSSTransition>
         </div>
     )
 }
