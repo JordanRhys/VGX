@@ -5,7 +5,7 @@ import './BasketIcon.scss';
 const BasketIcon = (props) => {
 
     return (
-        <Link to='/basket'>
+        <Link to='/basket' onClick={props.closeAll}>
             <div
                 className='BasketIcon__container'
             >

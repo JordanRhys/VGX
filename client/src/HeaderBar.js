@@ -82,7 +82,7 @@ const HeaderBar = (props) => {
         <Logo closeAll={closeAll}/>
 
         <div className='HeaderBar__right'>
-          <BasketIcon basketItems={props.basketItems}/>
+          <BasketIcon basketItems={props.basketItems} closeAll={closeAll}/>
         </div>
         
       </div>
