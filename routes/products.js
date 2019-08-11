@@ -175,24 +175,6 @@ router.get('/search/dropdown/:search', (req, res, next) => {
         })
 })
 
-// router.get('/search/:search', (req, res, next) => {
-//     const similar = req.params.search;
-//     Product
-//         .find({"name": {$regex: similar, $options: 'i'}, })
-//         .populate('category')
-//         .exec((err, result) => {
-//             if (!err) {
-//                 if (result === undefined || result.length === 0) {
-//                     res.json([]);
-//                 } else {
-//                     res.json(result);
-//                 }
-//             } else {
-//                 console.log(err);
-//             }
-//         })
-// })
-
 router.get('/search/:search', (req, res, next) => {
     function titleCase(str) {
         str = str.toLowerCase();
@@ -300,6 +282,26 @@ router.get('/basket/:items', (req, res, next) => {
                 console.log(err);
             }
         })
+})
+
+router.get('/updatestock/:products', (req, res, next) => {
+    const items = req.params.products;
+    const split = items.split(',');
+    console.log(split);
+
+    for (let i = 0; i < split.length; i++) {
+        Product.findByIdAndUpdate(split[i], {$inc: {'stock': -1}}, (err, response) => {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log('Stock updated for: ' + split[i]);
+            }
+        })
+    }
+
+    res.json({
+        "response": "Stock updated"
+    });
 })
 
 router.get('/', function(req, res, next) {

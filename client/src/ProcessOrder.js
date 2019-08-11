@@ -4,17 +4,37 @@ import './ProcessOrder.scss';
 
 import {BasketContext} from './App';
 
-const ProcessOrder = () => {
+const ProcessOrder = (props) => {
     const [processed, setProcessed] = useState(false);
 
     const api = useContext(BasketContext);
 
     useEffect(() => {
         localStorage.setItem('basket', JSON.stringify([]));
+        UpdateStock();
         window.setTimeout(() => {
             ProcessOrder();
         }, 2000);
     }, []);
+
+    const UpdateStock = () => {
+        let idArray = [];
+        props.products.forEach((product) => {
+            idArray.push(product._id);
+        })
+
+        fetch('/server/updatestock/' + idArray.join(','), {
+            headers: {
+                Accept: 'application/json'
+            }
+        }).then(function(res) {
+            if (res.status >= 200 && res.status <= 300) {
+                console.log(res);
+            } else {
+                console.log(res.status);
+            }
+        });
+    }
 
     const ProcessOrder = () => {
         setProcessed(true);

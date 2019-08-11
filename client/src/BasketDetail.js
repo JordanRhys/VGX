@@ -130,7 +130,7 @@ const BasketDetail = () => {
         );
     
     } else if (processing) {
-        return <ProcessOrder/>
+        return <ProcessOrder products={products}/>
 
     } else if (products.length === 0) {
         return (
