@@ -1,0 +1,84 @@
+@import 'MediaQuery';
+
+.SearchBar {
+
+    &__container {
+        width: 100%;
+        height: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 10;
+    }
+    
+    &__form {
+        padding: 0 1rem .2rem 1rem;
+        background-color: var(--color-primary-light);
+        width: 100%;
+        flex: 1;
+        display: flex;
+        position: relative;
+    }
+
+    &__input {
+        flex: 1;
+        height: 1.8rem;
+        border-radius: 1.8rem;
+        border: none;
+        padding: 0 2rem 0 1rem;
+        text-align: center;
+        font-size: var(--font-size-reg);
+    }
+
+    &__close {
+        height: 1.5rem;
+        width: 1.5rem;
+        font-size: var(--font-size-large);
+        color: var(--color-grey-dark);
+        padding-left: .5rem;
+    }
+
+    &__submit {
+        position: absolute;
+        top: 5%;
+        right: 10%;
+        border: none;
+        background-color: transparent;
+
+        @include respond(tabport) {
+            right: 1.5rem;
+        }
+    }
+
+    &__submit-svg {
+        display: block;
+        width: 1.5rem;
+        height: 1.5rem;
+        fill: var(--color-grey-mid);
+        cursor: pointer;
+    }
+}
+
+//React transitions
+.search-transition {
+
+    &-enter {
+        transform: translateY(-2rem);
+    }
+
+    &-enter-active {
+        transform: translateY(0);
+        transition: all 400ms;
+    }
+
+    &-exit {
+        transform: translateY(0);
+    }
+
+    &-exit-active {
+        transform: translateY(-2rem);
+        transition: all 400ms;
+    }
+}

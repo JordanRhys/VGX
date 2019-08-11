@@ -1,0 +1,42 @@
+.Universal {
+
+    &__checkbox {
+        width: 1.5rem;
+        height: 1.5rem;
+        border-radius: .4rem;
+        background-color: var(--color-white);
+        border: 1px solid var(--color-grey-midlight);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 .4rem;
+    }
+
+    &__checkbox-check {
+        color: var(--color-primary-dark);
+        font-size: var(--font-size-large);
+    }
+
+    &__button {
+        flex: 1;
+        height: 2.5rem;
+        background-color: var(--color-primary);
+        border: none;
+        border-radius: .2rem;
+        border-bottom: .1rem solid var(--color-primary-dark);
+        color: var(--color-white);
+        font-size: var(--font-size-small);
+        font-weight: 600;
+
+        &--cancel {
+            color: red;
+            border-bottom: 0;
+            background-color: transparent;
+            font-size: var(--font-size-small);
+        }
+
+        &--disabled {
+            color: var(--color-grey-mid);
+        }
+    }
+}

@@ -1,0 +1,123 @@
+.NavBar {
+
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 3rem;
+    left: 0;
+    z-index: 5;
+    display: flex;
+    font-size: var(--font-size-small);
+    color: var(--color-grey-darker);
+    background-color: rgba(0,0,0,.15);
+
+    &__greyout {
+        flex: 1;
+    }
+
+    &__container {
+        width: 16rem;
+        height: 100vh;
+        background-color: var(--color-primary-light);
+        z-index: 10;
+    }
+
+    &__list, &__cat-list {
+        list-style: none;
+        padding: 0 1rem;
+
+        & a {
+            display: block;
+            color: var(--color-grey-darker);
+
+            &:not(:last-child) {
+                margin-bottom: .75rem;
+            }
+        }
+    }
+
+    &__cat-list {
+        margin-top: .5rem;
+    }
+
+    &__link {
+        cursor: pointer;
+    }
+}
+
+
+// React Transitions
+.nav-transition {
+
+    &-enter {
+
+        & nav {
+            transform: translateX(-16rem);
+        }
+
+        background-color: rgba(0,0,0,0);
+    }
+
+    &-enter-active {
+
+        & nav {
+            transform: translateX(0);
+            transition: all 400ms;
+        }
+
+        
+        background-color: rgba(0,0,0,.15);
+        transition: all 400ms;
+    }
+
+    &-exit {
+
+        & nav {
+            transform: translateX(0)
+        }
+
+        background-color: rgba(0,0,0,.15);
+    }
+
+    &-exit-active {
+
+        & nav {
+            transform: translateX(-16rem);
+            transition: all 400ms;
+        }
+
+        background-color: rgba(0,0,0,0);
+        transition: all 400ms;
+    }
+}
+
+.catlist-transition {
+
+    &-enter {
+        transform: translateX(-2rem);
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    &-enter-active {
+        transform: translateX(0);
+        color: var(--color-grey-darker);
+        opacity: 1;
+        pointer-events: all;
+        transition: all 400ms;
+    }
+
+    &-exit {
+        transform: translate(0);
+        color: var(--color-grey-darker);
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    &-exit-active {
+        transform: translate(-2rem);
+        opacity: 0;
+        pointer-events: none;
+        transition: all 400ms;
+    }
+}
