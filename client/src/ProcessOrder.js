@@ -29,7 +29,7 @@ const ProcessOrder = (props) => {
             }
         }).then(function(res) {
             if (res.status >= 200 && res.status <= 300) {
-                console.log(res);
+                return
             } else {
                 console.log(res.status);
             }
