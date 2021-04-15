@@ -209,7 +209,7 @@ router.get('/search/:search', (req, res, next) => {
                     
                 } else {
                     const singleCat = result.filter((cat) => (
-                         cat.name.includes(searchSplit[1])
+                        cat.name.includes(searchSplit[1])
                     ));
 
                     let catIDs = [];
