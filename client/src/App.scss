@@ -17,9 +17,9 @@
 
   &__container {
     width: 100vw;
-    min-height: 91vh;
     background-color: #eee;
     margin-bottom: .5rem;
+    flex: 1;
   }
 
   &__top-padding {
