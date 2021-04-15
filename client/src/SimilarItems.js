@@ -32,11 +32,19 @@ const SimilarItems = (props) => {
             if (res === undefined) {
                 return [];
             }
-            return res.json()
-        }).then(function(res) {
-            if (isMounted) {
-                setProducts(res);
+            return res.text()
+        }).then(function(text) {
+
+            try {
+                const data = JSON.parse(text)
+
+                if (isMounted) {
+                    setProducts(data);
+                }
+            } catch (err) {
+                return
             }
+            
         });
     }
 
