@@ -17,4 +17,12 @@
         text-align: center;
         margin: .5rem;
     }
+
+    &__link,
+    &__link:active,
+    &__link:visited,
+    &__link:link {
+        color: inherit;
+        text-decoration: underline;
+    }
 }
